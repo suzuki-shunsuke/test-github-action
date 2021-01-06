@@ -1,9 +1,14 @@
 ---
 name: CI
-on: [push]
+on: [push,pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: pwd
-      run: pwd
+      - uses: actions/checkout@v2
+    - name: git rev-parse HEAD
+      run: git rev-parse HEAD
+    - name: git branch
+      run: git branch
+    - name: git status
+      run: git status
