@@ -6,11 +6,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-      - name: git rev-parse HEAD
-        run: git rev-parse HEAD
-      - name: git branch
-        run: git branch
-      - name: git status
-        run: git status
+      - run: echo "foo=foo" >> "$GITHUB_ENV"
+      - run: echo $foo
