@@ -1,9 +1,10 @@
 ---
 name: CI
-on: [push]
+on: [push,pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: pwd
-      run: pwd
+      - uses: actions/checkout@v2
+      - run: echo "foo=foo" >> "$GITHUB_ENV"
+      - run: echo $foo
