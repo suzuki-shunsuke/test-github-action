@@ -16,8 +16,7 @@ jobs:
       - name: output services
         id: output-services
         run: |
-          echo -n "::set-output name=services::"
-          cat services.json
+          echo "::set-output name=services::$(cat services.json)"
   build:
     runs-on: ubuntu-latest
     needs: setup
