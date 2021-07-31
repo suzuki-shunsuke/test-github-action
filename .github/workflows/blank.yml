@@ -1,9 +1,12 @@
 ---
-name: CI
-on: [push]
+name: test
+on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: pwd
-      run: pwd
+      - id: echo-env
+        name: echo env
+        run: |
+          echo "GITHUB_REF: $GITHUB_REF"
+          echo "GITHUB_SHA: $GITHUB_SHA"
