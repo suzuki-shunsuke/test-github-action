@@ -8,6 +8,21 @@ jobs:
     - id: files
       uses: jitterbit/get-changed-files@v1
     - run: |
+        for changed_file in ${{ steps.files.outputs.all }}; do
+          echo "all: ${changed_file}"
+        done
+        for changed_file in ${{ steps.files.outputs.added }}; do
+          echo "added: ${changed_file}"
+        done
+        for changed_file in ${{ steps.files.outputs.modified }}; do
+          echo "modified: ${changed_file}"
+        done
+        for changed_file in ${{ steps.files.outputs.removed }}; do
+          echo "removed: ${changed_file}"
+        done
+        for changed_file in ${{ steps.files.outputs.renamed }}; do
+          echo "renamed: ${changed_file}"
+        done
         for changed_file in ${{ steps.files.outputs.added_modified }}; do
-          echo "${changed_file}"
+          echo "added_modified: ${changed_file}"
         done
