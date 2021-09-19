@@ -1,0 +1,35 @@
+---
+name: test
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # aqua requires the environment variable `GITHUB_TOKEN`
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: cache ~/.aqua
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.aqua/pkgs
+          ~/.aqua/registries
+        key: ${{ runner.os }}-${{ hashFiles('aqua.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-
+    - uses: suzuki-shunsuke/aqua-installer@v0.1.3
+      with:
+        version: v0.7.1 # renovate: depName=suzuki-shunsuke/aqua
+    - run: echo "$HOME/.aqua/bin" >> $GITHUB_PATH
+    - run: aqua i # -l option isn't used to cache packages properly
+
+    - run: |
+        github-comment exec -- git ls-files |
+          github-comment exec -- grep -E "^.*\.sh$" |
+          xargs github-comment exec -- shellcheck
