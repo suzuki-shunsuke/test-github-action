@@ -5,5 +5,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: pwd
-      run: pwd
+    - uses: suzuki-shunsuke/github-action-rerun-workflow@v0.1.0-0
+      with:
+        name: foo
