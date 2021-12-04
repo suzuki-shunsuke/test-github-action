@@ -5,6 +5,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - run: |
+        which brew
+        brew install git
     - id: files
       uses: jitterbit/get-changed-files@v1
     - run: |
