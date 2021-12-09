@@ -1,9 +1,16 @@
 ---
-name: CI
-on: [push]
+name: Test asdf action
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: pwd
-      run: pwd
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: asdf_install
+        uses: asdf-vm/actions/install@v1
+      - run: node -v
