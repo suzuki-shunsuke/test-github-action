@@ -5,5 +5,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: pwd
-      run: pwd
+    - name: Checkout
+      uses: actions/checkout@v2
+    - uses: aquaproj/aqua-installer@v0.4.0
+      with:
+        version: v0.8.11
+    - run: actionlint
