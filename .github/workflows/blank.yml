@@ -10,3 +10,4 @@ jobs:
     - uses: aquaproj/aqua-installer@v0.4.0
       with:
         version: v0.8.11
+    - run: actionlint
