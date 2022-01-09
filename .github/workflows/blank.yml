@@ -8,4 +8,6 @@ jobs:
     - uses: aquaproj/aqua-installer@feat/check-aqua_version
       with:
         aqua_version: v0.9.0-0
-        enable_aqua_install: "false"
+        aqua_opts: ""
+      env:
+        AQUA_LOG_LEVEL: debug
