@@ -1,0 +1,19 @@
+name: CI
+on: push
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache Tools
+        id: cache-tools
+        uses: actions/cache@v2
+        with:
+          path: /home/runner/.aqua
+          key: cache-tools-${{ hashFiles('aqua.yaml') }}
+      - uses: aquaproj/aqua-installer@v0.4.0
+        with:
+          aqua_version: v0.8.13
+        if: steps.cache-tools.outputs.cache-hit != 'true'
+      - run: github-comment -v
