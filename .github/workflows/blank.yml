@@ -5,5 +5,4 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: pwd
-      run: pwd
+    - uses: aquaproj/aqua-installer@feat/check-aqua_version
