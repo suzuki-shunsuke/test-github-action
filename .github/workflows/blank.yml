@@ -1,9 +1,26 @@
 ---
 name: CI
-on: [push]
+on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: pwd
-      run: pwd
+    - uses: actions/checkout@v2
+    - uses: aquaproj/aqua-installer@v0.6.0
+      with:
+        aqua_version: v0.10.0
+    - run: |
+        prs_file=$(mktemp)
+        TARGET=aws/terraform-ci
+        github-comment exec -- gh pr list --json number -L 100 -l "$TARGET" -q ".[].number" >"$prs_file"
+        cat "$prs_file" >&2
+        while read -r pr_number; do
+          if [ "$CI_INFO_PR_NUMBER" = "$pr_number" ]; then
+            # To prevent infinite loop
+            continue
+          fi
+          echo "===> Update PR $pr_number" >&2
+        done <"$prs_file"
+        rm "$prs_file"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
