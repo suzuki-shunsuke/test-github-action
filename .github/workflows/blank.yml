@@ -12,7 +12,7 @@ jobs:
     - run: |
         prs_file=$(mktemp)
         TARGET=aws/terraform-ci
-        gh pr list --json number -L 100 -l "$TARGET" -q ".[].number" >"$prs_file"
+        github-comment exec -- gh pr list --json number -L 100 -l "$TARGET" -q ".[].number" >"$prs_file"
         cat "$prs_file" >&2
         while read -r pr_number; do
           if [ "$CI_INFO_PR_NUMBER" = "$pr_number" ]; then
