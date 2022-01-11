@@ -6,9 +6,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: output
-      id: output
-      run: |
-        echo "::set-output name=services::foo"
-    - name: get output
-      run: echo "${{ steps.output.outputs.services}}"
+    - run: |
+        prs_file=$(mktemp)
+        TARGET=aws/terraform-ci
+        gh pr list --json number -L 100 -l "$TARGET" -q ".[].number" >"$prs_file"
+        cat "$prs_file" >&2
+        while read -r pr_number; do
+          if [ "$CI_INFO_PR_NUMBER" = "$pr_number" ]; then
+            # To prevent infinite loop
+            continue
+          fi
+          echo "===> Update PR $pr_number" >&2
+        done <"$prs_file"
+        rm "$prs_file"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
