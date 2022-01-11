@@ -1,9 +1,9 @@
 ---
 name: CI
-on: [push]
+on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: pwd
-      run: pwd
+    - run: echo "foo"
+      if: contains(github.event.pull_request.labels.*.name, 'foo')
