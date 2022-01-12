@@ -1,9 +1,14 @@
 ---
-name: CI
-on: [push]
+name: actionlint
+on:
+  pull_request:
+    branches: [master]
 jobs:
-  build:
+  default:
     runs-on: ubuntu-latest
     steps:
-    - name: pwd
-      run: pwd
+    - uses: actions/checkout@v2
+    - uses: aquaproj/aqua-installer@v0.6.0
+      with:
+        aqua_version: v0.10.0
+    - run: actionlint
