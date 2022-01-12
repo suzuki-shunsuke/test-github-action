@@ -1,0 +1,10 @@
+---
+# aqua - Declarative CLI Version Manager
+# https://aquaproj.github.io/
+registries:
+- type: standard
+  ref: v0.13.1 # renovate: depName=aquaproj/aqua-registry
+
+packages:
+- name: koalaman/shellcheck@v0.8.0
+- name: rhysd/actionlint@v1.6.8
