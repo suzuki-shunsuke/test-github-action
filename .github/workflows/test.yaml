@@ -5,14 +5,4 @@ jobs:
     name: Test
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - name: Cache Tools
-        id: cache-tools
-        uses: actions/cache@v2
-        with:
-          path: ~/.local/share/aquaproj-aqua
-          key: cache-tools-${{ hashFiles('aqua.yaml') }}
-      - uses: aquaproj/aqua-installer@v0.6.0
-        with:
-          aqua_version: v0.10.0
-      - run: github-comment -v
+      - run: whoami
