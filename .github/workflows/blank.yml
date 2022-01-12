@@ -11,4 +11,5 @@ jobs:
     - uses: aquaproj/aqua-installer@v0.6.0
       with:
         aqua_version: v0.10.0
+    - run: echo ~/.aqua/bin >> $GITHUB_PATH
     - run: actionlint
