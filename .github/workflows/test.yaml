@@ -1,0 +1,8 @@
+name: CI
+on: push
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-20.04
+    steps:
+      - run: whoami
