@@ -4,6 +4,11 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:
+        - target: github/foo
+          working_directory: github/services/foo
     steps:
-    - name: pwd
-      run: pwd
+    - run: echo ${{matrix.target.target}}
+    - run: echo ${{matrix.target.working_directory}}
