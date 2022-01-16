@@ -1,0 +1,28 @@
+name: List changed services
+description: List changed services
+inputs:
+  changed_files:
+    description: 'Changed Files'
+    required: true
+  labels:
+    description: 'Labels File'
+    required: true
+  config:
+    description: 'config file path'
+    required: false
+    default: 'config.yaml'
+  config_files:
+    description: 'config file paths'
+    required: true
+outputs:
+  # tfmigrate_targets, teraform_targets
+  # - target
+  # - working_directory
+  # - assume_role_arn
+  tfmigrate_targets:
+    description: list of tfmigrate targets
+  terraform_targets:
+    description: list of terraform targets
+runs:
+  using: 'node16'
+  main: 'lib/index.js'

@@ -2,8 +2,43 @@
 name: CI
 on: [push]
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
+    outputs:
+      tfmigrate_targets: ${{ steps.list-targets.outputs.tfmigrate_targets }}
+      terraform_targets: ${{ steps.list-targets.outputs.terraform_targets }}
     steps:
-    - name: pwd
-      run: pwd
+    - uses: actions/checkout@v2
+    - uses: ./
+      id: list-targets
+      with:
+        changed_files: pr_all_filenames.txt
+        labels: labels.txt
+        config: config.yaml
+        config_files: config_files.txt
+
+  tfmigrate:
+    runs-on: ubuntu-latest
+    needs: setup
+    # if services is empty, the build job is skipped
+    if: "join(fromJSON(needs.setup.outputs.tfmigrate_targets), '') != ''"
+    strategy:
+      matrix:
+        target: ${{fromJSON(needs.setup.outputs.tfmigrate_targets)}}
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo ${{matrix.target.target}}
+      - run: echo ${{matrix.target.working_directory}}
+
+  terraform:
+    runs-on: ubuntu-latest
+    needs: setup
+    # if services is empty, the build job is skipped
+    if: "join(fromJSON(needs.setup.outputs.terraform_targets), '') != ''"
+    strategy:
+      matrix:
+        target: ${{fromJSON(needs.setup.outputs.terraform_targets)}}
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo ${{matrix.target.target}}
+      - run: echo ${{matrix.target.working_directory}}
