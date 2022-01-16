@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "ncc build index.js --license LICENSE"
+    "build": "ncc build src/index.ts --license LICENSE"
   },
   "dependencies": {
     "@actions/core": "1.6.0",
