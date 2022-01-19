@@ -4,6 +4,10 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: ["foo", "bar"]
+    env:
+      TFACTION_TARGET: ${{ matrix.target }}
     steps:
-    - name: pwd
-      run: pwd
+    - run: echo "$TFACTION_TARGET"
