@@ -15,4 +15,4 @@ jobs:
         aqua_version: v0.10.1
     - run: ci-info run
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token }}
