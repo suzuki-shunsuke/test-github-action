@@ -15,7 +15,7 @@ jobs:
     steps:
     - run: sleep ${{matrix.sleep}}
     - run: exit 1
-      if: matrix.sleep == 5
+      if: matrix.sleep == 30
 
   notify:
     runs-on: ubuntu-latest
