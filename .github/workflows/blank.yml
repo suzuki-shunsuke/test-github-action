@@ -19,7 +19,7 @@ jobs:
     needs: setup
     strategy:
       matrix:
-        target: ${{needs.setup.outputs.targets}}
+        target: ${{fromJSON(needs.setup.outputs.targets)}}
     steps:
     - uses: actions/checkout@v2
     - run: echo ${{matrix.target.target}}
