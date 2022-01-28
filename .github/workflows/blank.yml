@@ -15,10 +15,10 @@ jobs:
       - uses: ./
         id: list-targets
   build:
-    runs-on: ${{matrix.runs_on}}
+    runs-on: ${{matrix.target.runs_on}}
     strategy:
       matrix:
         target: ${{needs.setup.outputs.targets}}
     steps:
     - uses: actions/checkout@v2
-    - run: echo ${{matrix.target}}
+    - run: echo ${{matrix.target.target}}
