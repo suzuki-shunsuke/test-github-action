@@ -6,13 +6,19 @@ on:
   push:
     branches: [master]
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
+    outputs:
+      targets: ${{ steps.list-targets.outputs.targets }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        id: list-targets
+  build:
+    runs-on: ${{matrix.runs_on}}
+    strategy:
+      matrix:
+        target: ${{needs.setup.outputs.targets}}
     steps:
     - uses: actions/checkout@v2
-    - uses: aquaproj/aqua-installer@v0.6.0
-      with:
-        aqua_version: v0.10.1
-    - run: ci-info run
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+    - run: echo ${{matrix.target}}
