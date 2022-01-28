@@ -3,7 +3,8 @@ on: issue_comment
 jobs:
   pr_commented:
     name: PR comment
-    if: github.event.issue.pull_request && github.event.issue.comment.body == '/update-branch'
+    if: github.event.issue.pull_request
+    # if: github.event.issue.pull_request && github.event.issue.comment.body == '/update-branch'
     runs-on: ubuntu-latest
     steps:
       - name: Generate token
