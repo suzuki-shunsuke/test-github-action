@@ -1,0 +1,8 @@
+name: 'Hello World'
+description: 'Greet someone and record the time'
+outputs:
+  targets:
+    description: 'The time we greeted you'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
