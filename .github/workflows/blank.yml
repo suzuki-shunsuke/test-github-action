@@ -16,6 +16,7 @@ jobs:
         id: list-targets
   build:
     runs-on: ${{matrix.target.runs_on}}
+    name: 'build (${{matrix.target.target}})'
     needs: setup
     strategy:
       matrix:
