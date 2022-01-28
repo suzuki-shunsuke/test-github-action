@@ -8472,7 +8472,20 @@ const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 
 try {
-  core.setOutput("targets", [{runs_on: 'ubuntu-latest', target: 'foo'}, {runs_on: 'ubuntu-18.04', target: 'bar'}]);
+  core.setOutput("targets", [
+    {
+      runs_on: 'ubuntu-latest',
+      target: 'foo',
+      envs: {
+        'YOO': 'FOO',
+      },
+    }, {
+      runs_on: 'ubuntu-18.04',
+      target: 'bar',
+      envs: {
+        'YOO': 'BAR',
+      },
+    }]);
 } catch (error) {
   core.setFailed(error.message);
 }
