@@ -8,11 +8,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        sleep: [5, 10, 20]
     steps:
-    - uses: actions/checkout@v2
-    - uses: aquaproj/aqua-installer@v0.6.0
-      with:
-        aqua_version: v0.10.1
-    - run: ci-info run
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+    - run: sleep ${{matrix.sleep}}
+    - run: exit 1
+      if: matrix.sleep == 30
+
+  notify:
+    runs-on: ubuntu-latest
+    needs: build
+    if: failure()
+    steps:
+    - run: echo "error" >&2
+    # - run: exit 1
