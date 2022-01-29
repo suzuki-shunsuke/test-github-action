@@ -10,9 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: aquaproj/aqua-installer@v0.6.0
-      with:
-        aqua_version: v0.10.1
-    - run: ci-info run
+    - run: echo "$IS_RENOVATE"
       env:
-        GITHUB_TOKEN: ${{ github.token }}
+        IS_RENOVATE: ${{ 'suzuki-shunsuke' == github.event.pull_request.user.login }}
