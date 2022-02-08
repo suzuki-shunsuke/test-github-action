@@ -1,0 +1,13 @@
+---
+name: automerge disabled
+on:
+  pull_request:
+    branches: [master]
+    types:
+    - auto_merge_disabled
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - run: "echo '${{ toJSON(github.event) }}' | jq"
+    - run: jq . $GITHUB_EVENT_PATH
