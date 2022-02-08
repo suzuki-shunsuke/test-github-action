@@ -9,4 +9,4 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - run: sleep 30
+    - run: sleep 600
