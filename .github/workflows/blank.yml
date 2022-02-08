@@ -13,6 +13,3 @@ jobs:
     - uses: aquaproj/aqua-installer@v0.6.0
       with:
         aqua_version: v0.10.2
-    - run: ci-info run
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
