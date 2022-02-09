@@ -1,7 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "local>suzuki-shunsuke/renovate-config"
+    "config:base",
+    "local>suzuki-shunsuke/renovate-config",
+    "github>aquaproj/aqua-renovate-config#0.1.8"
   ],
   "automerge": true,
   "platformAutomerge": true,
