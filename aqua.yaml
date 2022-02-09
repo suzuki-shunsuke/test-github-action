@@ -6,4 +6,4 @@ registries:
   ref: v1.0.0 # renovate: depName=aquaproj/aqua-registry
 
 packages:
-- name: suzuki-shunsuke/ci-info@v2.0.1
+- name: suzuki-shunsuke/ci-info@v2.0.3
