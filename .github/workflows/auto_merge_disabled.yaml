@@ -1,13 +1,16 @@
 ---
-name: automerge disabled
+name: enable automerge
 on:
   pull_request:
     branches: [master]
-    types:
-    - auto_merge_disabled
+permissions:
+  contents: write
+  pull-requests: write
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - run: "echo '${{ toJSON(github.event) }}' | jq"
-    - run: jq . $GITHUB_EVENT_PATH
+      - name: enable automerge
+        run: gh pr merge -R "$GITHUB_REPOSITORY" --merge --auto "${{ github.event.pull_request.number }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
