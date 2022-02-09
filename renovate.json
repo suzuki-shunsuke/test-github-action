@@ -3,5 +3,7 @@
   "extends": [
     "local>suzuki-shunsuke/renovate-config"
   ],
-  "platformAutomerge": true
+  "automerge": true,
+  "platformAutomerge": true,
+  "rebaseWhen": "never"
 }
