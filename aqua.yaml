@@ -6,3 +6,4 @@ registries:
 
 packages:
 - name: suzuki-shunsuke/ci-info@v2.0.1
+- name: suzuki-shunsuke/tfcmt@v3.0.0
