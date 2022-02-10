@@ -2,7 +2,7 @@
 name: enable automerge
 on:
   pull_request:
-    branches: [master]
+    branches: [dummy]
 permissions:
   contents: write
   # pull-requests: write
