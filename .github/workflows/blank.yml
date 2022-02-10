@@ -12,3 +12,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: gh pr review -R "$GITHUB_REPOSITORY" -a ${{ github.event.pull_request.number }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
