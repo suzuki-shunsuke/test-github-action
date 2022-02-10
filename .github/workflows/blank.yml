@@ -5,11 +5,10 @@ on:
     branches: [master]
   push:
     branches: [master]
+permissions:
+  pull-requests: write
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: aquaproj/aqua-installer@v0.6.0
-      with:
-        aqua_version: v0.10.2
-    - sleep 600
+    - run: gh pr review -R "$GITHUB_REPOSITORY" -a ${{ github.event.pull_request.number }}
