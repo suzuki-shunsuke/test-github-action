@@ -1,0 +1,24 @@
+name: Close Renovate pull requests automatically
+description: Close Renovate pull requests automatically
+inputs:
+  renovate_login:
+    description: 'Renovate login'
+    default: 'renovate[bot]'
+    required: false
+  github_token:
+    description: 'GitHub Access Token'
+    default: ${{ github.token }}
+    required: false
+  skip_labels:
+    description: 'Pull Request labels separated with comma'
+    required: false
+  additional_query:
+    description: 'Additional Query'
+    required: false
+  created_before_minutes:
+    description: 'Pull Request labels separated with comma'
+    default: 10
+    required: false
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

@@ -1,5 +1,5 @@
 ---
-name: CI
+name: test-auto-close
 on:
   pull_request:
     branches: [master]
@@ -9,7 +9,5 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: aquaproj/aqua-installer@v0.6.0
-      with:
-        aqua_version: v0.10.2
-    - sleep 600
+    - uses: actions/checkout@v2
+    - uses: ./
