@@ -1,5 +1,5 @@
 ---
-name: CI
+name: test-auto-close
 on:
   pull_request:
     branches: [master]
@@ -11,9 +11,3 @@ jobs:
     environment: null
     steps:
     - uses: actions/checkout@v2
-    - uses: aquaproj/aqua-installer@v0.6.0
-      with:
-        aqua_version: v0.10.1
-    - run: ci-info run
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
