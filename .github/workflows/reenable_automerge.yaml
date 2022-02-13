@@ -2,7 +2,7 @@
 name: Reenable automerge
 on:
   pull_request:
-    branches: [main]
+    branches: [master]
     types:
       - auto_merge_disabled
 permissions:
