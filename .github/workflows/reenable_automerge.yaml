@@ -6,7 +6,8 @@ on:
     types:
       - auto_merge_disabled
 permissions:
-  pull-requests: write
+  # pull-requests: write
+  contents: write
 jobs:
   main:
     # if: "github.event.reason == 'Base branch was modified'"
