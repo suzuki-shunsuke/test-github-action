@@ -6,7 +6,7 @@ on:
     types:
       - auto_merge_disabled
 permissions:
-  # pull-requests: write
+  pull-requests: read
   contents: write
 jobs:
   main:
