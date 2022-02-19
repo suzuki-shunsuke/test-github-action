@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: suzuki-shunsuke/test-github-action-with-go@main
-    - uses: suzuki-shunsuke/test-github-action-with-go@v0.1.0-2
+    - uses: suzuki-shunsuke/test-github-action-with-go@v0.1.0-3
