@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: echo '::debug title=title_debug::debug'
-    - run: echo '::notice title=title_notice::notice'
-    - run: echo '::warning title=title_warning::warning'
-    - run: echo '::error title=title_error::error'
+    - run: echo '::debug title=title debug::debug'
+    - run: echo '::notice title=title notice::notice'
+    - run: echo '::warning title=title warning::warning'
+    - run: echo '::error title=title error::error'
