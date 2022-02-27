@@ -1,5 +1,5 @@
 ---
-name: test-auto-close
+name: test message
 on:
   pull_request:
     branches: [master]
@@ -10,3 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - run: echo '::debug::debug'
+    - run: echo '::notice::notice'
+    - run: echo '::warning::warning'
+    - run: echo '::error::error'
