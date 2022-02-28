@@ -1,0 +1,20 @@
+---
+name: Release
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  scaffold:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git checkout -b test-release
+      - run: touch foo
+      - run: git add foo
+      - run: git commit -m "test"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - run: git tag test-release
+      - run: git push origin test-release
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
