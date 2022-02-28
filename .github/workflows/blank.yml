@@ -1,5 +1,5 @@
 ---
-name: test-auto-close
+name: test-go-action
 on:
   pull_request:
     branches: [master]
@@ -9,4 +9,5 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: suzuki-shunsuke/test-github-action-with-go@main
+    - uses: suzuki-shunsuke/test-github-action-with-go@v0.1.0-3
