@@ -11,7 +11,7 @@ jobs:
       - run: git checkout -b test-release
       - run: touch foo
       - run: git add foo
-      - run: echo "$GITHUB_TOKEN" | gh auth login --with-token
+      - run: gh auth setup-git
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - run: git commit -m "test"
