@@ -7,7 +7,7 @@ jobs:
   scaffold:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: git checkout -b test-release
       - run: touch foo
       - run: git add foo
