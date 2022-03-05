@@ -22,8 +22,8 @@ jobs:
       - run: git checkout -b "release/${{github.event.inputs.tag}}"
       - run: |
           git ls-files | grep -E "/action\.yaml$" | xargs git add
+      # https://github.community/t/github-actions-bot-email-address/17204/5
       - run: |
-          # https://github.community/t/github-actions-bot-email-address/17204/5
           git commit --author="github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" \
             -m "chore: release ${{github.event.inputs.tag}}
           base revision: $GITHUB_SHA"
