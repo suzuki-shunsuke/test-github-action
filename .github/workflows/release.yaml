@@ -13,19 +13,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - run: gh auth setup-git
         env:
           GITHUB_TOKEN: ${{ github.token }}
+      # https://github.community/t/github-actions-bot-email-address/17204/5
+      - run: gh config user.name "github-actions[bot]"
+      - run: gh config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - run: |
           git ls-files | grep -E "/action\.yaml$" |
             xargs -n 1 sed -i "s|- uses: suzuki-shunsuke/tfaction/\(.*\)@main|- uses: suzuki-shunsuke/tfaction/\1@$version|"
       - run: git checkout -b "release/${{github.event.inputs.tag}}"
       - run: |
           git ls-files | grep -E "/action\.yaml$" | xargs git add
-      # https://github.community/t/github-actions-bot-email-address/17204/5
       - run: |
-          git commit --author="github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" \
-            -m "chore: release ${{github.event.inputs.tag}}
+          git commit -m "chore: release ${{github.event.inputs.tag}}
           base revision: $GITHUB_SHA"
       - run: git tag "${{github.event.inputs.tag}}"
       - run: git push origin "${{github.event.inputs.tag}}"
