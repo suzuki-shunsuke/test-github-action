@@ -1,10 +1,10 @@
 ---
-name: test-auto-close
+name: test
 on:
   pull_request:
-    branches: [master]
+    branches: [main]
   push:
-    branches: [master]
+    branches: [main]
 jobs:
   build:
     runs-on: ubuntu-latest
