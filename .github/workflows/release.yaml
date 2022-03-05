@@ -23,7 +23,9 @@ jobs:
       - run: |
           git ls-files | grep -E "/action\.yaml$" | xargs git add
       - run: |
-          git commit -m "chore: release ${{github.event.inputs.tag}}
+          # https://github.community/t/github-actions-bot-email-address/17204/5
+          git commit --author="github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" \
+            -m "chore: release ${{github.event.inputs.tag}}
           base revision: $GITHUB_SHA"
       - run: git tag "${{github.event.inputs.tag}}"
       - run: git push origin "${{github.event.inputs.tag}}"
