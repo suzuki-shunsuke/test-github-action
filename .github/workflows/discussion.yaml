@@ -16,7 +16,7 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ github.event }}"
+      - run: echo "${{ toJSON(github.event) }}"
       - uses: actions/checkout@v3
       # read config
       # get labels
