@@ -1,0 +1,22 @@
+---
+name: Discussion
+on:
+  discussion:
+    types:
+      - created
+      - labeled
+      - answered
+  discussion_comment:
+    types:
+      - created
+permissions:
+  # "permissions" section should not be empty
+  contents: read
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # read config
+      # get labels
+      # Send notification to slack
