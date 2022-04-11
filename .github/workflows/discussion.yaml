@@ -12,6 +12,8 @@ on:
 permissions:
   # "permissions" section should not be empty
   contents: read
+  discussions: read
+  pages: read
 jobs:
   main:
     runs-on: ubuntu-latest
