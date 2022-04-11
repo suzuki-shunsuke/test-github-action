@@ -14,6 +14,7 @@ permissions:
   contents: read
   discussions: read
   pages: read
+  metadata: read
 jobs:
   main:
     runs-on: ubuntu-latest
