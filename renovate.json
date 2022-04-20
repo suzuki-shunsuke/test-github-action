@@ -3,7 +3,7 @@
   "extends": [
     "config:base",
     "github>suzuki-shunsuke/renovate-config#0.1.2",
-    "github>aquaproj/aqua-renovate-config#0.1.8"
+    "github>aquaproj/aqua-renovate-config#0.1.9"
   ],
   "automerge": true,
   "platformAutomerge": true,
