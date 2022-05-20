@@ -1,9 +1,7 @@
 # aqua - Declarative CLI Version Manager
 # https://aquaproj.github.io/
 registries:
-- type: standard
-  ref: v1.1.0 # renovate: depName=aquaproj/aqua-registry
-
+  - type: standard
+    ref: v2.16.0 # renovate: depName=aquaproj/aqua-registry
 packages:
-- name: suzuki-shunsuke/ci-info@v2.0.1
-- name: suzuki-shunsuke/tfcmt@v3.0.1
+  - name: suzuki-shunsuke/renovate-issue-action@v0.3.0
