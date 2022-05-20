@@ -1,11 +1,11 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base",
     "github>suzuki-shunsuke/renovate-config#0.1.2",
     "github>aquaproj/aqua-renovate-config#0.1.9"
   ],
-  "automerge": true,
-  "platformAutomerge": true,
-  "rebaseWhen": "never"
+  "rebaseWhen": "never",
+  "prBodyNotes": [
+    "<!-- renovate-issue-action: {\"packageFileDir\": \"{{packageFileDir}}\", \"packageName\": \"{{packageName}}\", \"groupName\": \"{{groupName}}\", \"depName\": \"{{depName}}\", \"manager\": \"{{manager}}\", \"updateType\": \"{{updateType}}\"} -->"
+  ]
 }
