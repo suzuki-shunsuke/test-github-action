@@ -10,14 +10,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - run: cat output.txt | sed -E "s/^export //"
+      - uses: aquaproj/aqua-installer@v1.0.0
+        with:
+          aqua_version: v1.11.0-1
+      - run: ci-info run | sed -E "s/^export //"
         shell: bash
-      - run: cat output.txt | sed -E "s/^export //" >> "$GITHUB_ENV"
-        shell: bash
-      # - uses: aquaproj/aqua-installer@v1.0.0
-      #   with:
-      #     aqua_version: v1.11.0-1
-      # - run: aqua -log-level debug exec -- ci-info run
-      #   shell: bash
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
