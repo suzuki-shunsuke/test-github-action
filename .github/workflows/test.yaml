@@ -19,5 +19,7 @@ jobs:
         shell: bash
       - run: "aqua which ci-info"
         shell: bash
-      - run: ls -lh "$(aqua which ci-info)"
+      - run: ci-info run
         shell: bash
+        env:
+          AQUA_LOG_LEVEL: debug
