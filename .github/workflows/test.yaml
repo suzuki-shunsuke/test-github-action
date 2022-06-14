@@ -13,7 +13,11 @@ jobs:
       - uses: aquaproj/aqua-installer@v1.0.0
         with:
           aqua_version: v1.11.0-1
-      - run: ci-info run | sed -E "s/^export //"
+      - run: ls -lh ~/.local/share/aquaproj-aqua/bin
         shell: bash
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: which ci-info || :
+        shell: bash
+      - run: aqua which ci-info || :
+        shell: bash
+      - run: aqua which ci-info || :
+        shell: bash
