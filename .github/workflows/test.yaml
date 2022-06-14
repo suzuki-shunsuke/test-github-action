@@ -9,8 +9,11 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v3
-    - run: echo "FOO=BAR" >> "$GITHUB_ENV"
-      shell: bash
-    - run: echo "$FOO"
-      shell: bash
+      - uses: actions/checkout@v3
+      - uses: aquaproj/aqua-installer@v1.0.0
+        with:
+          aqua_version: v1.11.0-1
+      - run: ci-info run
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
