@@ -15,9 +15,7 @@ jobs:
           aqua_version: v1.11.0-1
       - run: ls -lh ~/.local/share/aquaproj-aqua/bin
         shell: bash
-      - run: which ci-info || :
+      - run: "which ci-info || :"
         shell: bash
-      - run: aqua which ci-info || :
-        shell: bash
-      - run: aqua which ci-info || :
+      - run: "aqua which ci-info || :"
         shell: bash
