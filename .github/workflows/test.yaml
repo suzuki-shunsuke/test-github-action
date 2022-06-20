@@ -9,17 +9,5 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: aquaproj/aqua-installer@v1.0.0
-        with:
-          aqua_version: v1.11.0-1
-      - run: ls -lh ~/.local/share/aquaproj-aqua/bin
+      - run: ls -lh ~/AppData/Local/
         shell: bash
-      - run: "which ci-info"
-        shell: bash
-      - run: "aqua which ci-info"
-        shell: bash
-      - run: ci-info run
-        shell: bash
-        env:
-          AQUA_LOG_LEVEL: debug
