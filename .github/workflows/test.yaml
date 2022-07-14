@@ -8,17 +8,21 @@ on:
 jobs:
   foo:
     runs-on: ubuntu-latest
-    if: "false"
+    outputs:
+      env: ${{steps.yaml-data.outputs.data}}
     steps:
-      - run: "true"
+      - id: yaml-data
+        uses: KJ002/read-yaml@1.6
+        with:
+          file: ./data.yaml
+          key-path: '["envs"]'
   zoo:
     runs-on: ubuntu-latest
-    steps:
-      - run: "true"
-  bar:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        env: ${{fromJSON(needs.foo.outputs.env)}}
     needs:
       - foo
-      - zoo
     steps:
-      - run: "true"
+      - run: echo "${{ matrix.env.id }}"

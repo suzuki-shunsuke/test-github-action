@@ -1,0 +1,3 @@
+envs:
+  - id: foo
+  - id: bar
