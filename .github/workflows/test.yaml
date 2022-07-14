@@ -11,8 +11,14 @@ jobs:
     if: "false"
     steps:
       - run: "true"
+  zoo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: "true"
   bar:
     runs-on: ubuntu-latest
-    needs: foo
+    needs:
+      - foo
+      - zoo
     steps:
       - run: "true"
