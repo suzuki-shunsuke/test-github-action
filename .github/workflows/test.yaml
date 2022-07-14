@@ -11,6 +11,7 @@ jobs:
     outputs:
       env: ${{steps.yaml-data.outputs.data}}
     steps:
+      - uses: actions/checkout@v3
       - id: yaml-data
         uses: KJ002/read-yaml@1.6
         with:
