@@ -1,12 +1,18 @@
 ---
-name: '- 🚀 Test'
+name: Test
 on:
   pull_request:
     branches: [main]
   push:
     branches: [main]
 jobs:
-  build:
+  foo:
     runs-on: ubuntu-latest
+    if: "false"
     steps:
-    - uses: actions/checkout@v3
+      - run: "true"
+  bar:
+    runs-on: ubuntu-latest
+    needs: foo
+    steps:
+      - run: "true"
