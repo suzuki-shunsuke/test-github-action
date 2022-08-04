@@ -9,7 +9,9 @@ jobs:
   test-windows:
     runs-on: windows-latest
     steps:
-      - run: (Resolve-Path ~\AppData\Local\aquaproj-aqua\bin).Path >> $GITHUB_PATH
+      - run: |
+          mkdir -p (Resolve-Path ~\AppData\Local\aquaproj-aqua\bin).Path
+          (Resolve-Path ~\AppData\Local\aquaproj-aqua\bin).Path >> $GITHUB_PATH
         if: env.AQUA_ROOT_DIR == ''
       - run: $Env:AQUA_ROOT_DIR\bin >> $GITHUB_PATH
         if: env.AQUA_ROOT_DIR != ''
