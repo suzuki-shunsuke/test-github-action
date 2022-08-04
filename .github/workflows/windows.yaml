@@ -1,0 +1,16 @@
+---
+name: Test Windows
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+jobs:
+  test-windows:
+    runs-on: windows-latest
+    steps:
+      - run: (Resolve-Path ~\AppData\Local\aquaproj-aqua\bin).Path >> $GITHUB_PATH
+        if: env.AQUA_ROOT_DIR == ''
+      - run: $Env:AQUA_ROOT_DIR\bin >> $GITHUB_PATH
+        if: env.AQUA_ROOT_DIR != ''
+      - run: "true"
