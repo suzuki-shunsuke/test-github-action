@@ -15,7 +15,6 @@ jobs:
           repo_owner: suzuki-shunsuke
           repo_name: test-github-action
           sha: fae4b30052b48f38129f98dfc0bf3bae470eaf01
-          context: ${{ github.job }}
       - run: sleep 20
       - uses: suzuki-shunsuke/update-commit-status-action@feat/first-pr
         if: always()
@@ -23,5 +22,4 @@ jobs:
           repo_owner: suzuki-shunsuke
           repo_name: test-github-action
           sha: fae4b30052b48f38129f98dfc0bf3bae470eaf01
-          context: ${{ github.job }}
           state: ${{ job.status }}
