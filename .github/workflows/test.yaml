@@ -8,22 +8,20 @@ on:
 jobs:
   foo:
     runs-on: ubuntu-latest
-    outputs:
-      env: ${{steps.yaml-data.outputs.data}}
     steps:
       - uses: actions/checkout@v3
-      - id: yaml-data
-        uses: KJ002/read-yaml@1.6
+      - uses: suzuki-shunsuke/update-commit-status-action@feat/first-pr
         with:
-          file: ./data.yaml
-          key-path: '["envs"]'
-  zoo:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        env: ${{fromJSON(needs.foo.outputs.env)}}
-    needs:
-      - foo
-    steps:
-      - run: echo "${{ matrix.env.id }}"
+          repo_owner: suzuki-shunsuke
+          repo_name: test-github-action
+          sha: fae4b30052b48f38129f98dfc0bf3bae470eaf01
+          context: ${{ env.GITHUB_JOB }}
+      - run: sleep 20
+      - uses: suzuki-shunsuke/update-commit-status-action@feat/first-pr
+        if: always()
+        with:
+          repo_owner: suzuki-shunsuke
+          repo_name: test-github-action
+          sha: fae4b30052b48f38129f98dfc0bf3bae470eaf01
+          context: ${{ env.GITHUB_JOB }}
+          state: ${{ job.status }}
