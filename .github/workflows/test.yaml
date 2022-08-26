@@ -9,5 +9,6 @@ jobs:
   foo:
     runs-on: ubuntu-latest
     steps:
+      - run: gsutil version
       - run: 'echo "GITHUB_SHA: $GITHUB_SHA"'
       - run: 'echo "GITHUB_REF: $GITHUB_REF"'
