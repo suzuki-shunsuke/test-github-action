@@ -1,5 +1,5 @@
 ---
-name: Test
+name: check event
 on: push
 jobs:
   foo:
