@@ -4,26 +4,11 @@ on:
   pull_request:
     branches: [main]
   push:
-    branches: [main]
+    branches: [test-ref-sha]
 jobs:
   foo:
     runs-on: ubuntu-latest
-    outputs:
-      env: ${{steps.yaml-data.outputs.data}}
     steps:
-      - uses: actions/checkout@v3
-      - id: yaml-data
-        uses: KJ002/read-yaml@1.6
-        with:
-          file: ./data.yaml
-          key-path: '["envs"]'
-  zoo:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        env: ${{fromJSON(needs.foo.outputs.env)}}
-    needs:
-      - foo
-    steps:
-      - run: echo "${{ matrix.env.id }}"
+      - run: gsutil version
+      - run: 'echo "GITHUB_SHA: $GITHUB_SHA"'
+      - run: 'echo "GITHUB_REF: $GITHUB_REF"'
