@@ -9,5 +9,40 @@ jobs:
   foo:
     runs-on: ubuntu-latest
     steps:
-      - run: echo foo >> "$GITHUB_STEP_SUMMARY"
-      - run: echo bar >> "$GITHUB_STEP_SUMMARY"
+      - shell: bash
+        run: |
+          cat << EOS >> "$GITHUB_STEP_SUMMARY"
+
+          [Pull Request]($PR_URL)
+
+          ## How to rerun or cancel the Workflow and jobs
+          
+          Please post a comment to the [Pull Request]($PR_URL).
+
+          EOS
+        env:
+          PR_URL: https://github.com/suzuki-shunsuke/test-github-action/pull/110
+      - shell: bash
+        run: |
+          cat << EOS >> "$GITHUB_STEP_SUMMARY"
+
+          Rerun the workflow.
+
+          $CODE_BLOCK
+          /rerun-workflow $GITHUB_RUN_ID
+          $CODE_BLOCK
+
+          Rerun failed jobs.
+
+          $CODE_BLOCK
+          /rerun-failed-job $GITHUB_RUN_ID
+          $CODE_BLOCK
+
+          Cancel the workflow.
+
+          $CODE_BLOCK
+          /cancel $GITHUB_RUN_ID
+          $CODE_BLOCK
+          EOS
+        env:
+          CODE_BLOCK: "```"
