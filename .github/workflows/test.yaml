@@ -9,8 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - shell: bash
-        run: |
-          echo foo >> "$GITHUB_STEP_SUMMARY"
+        run: echo foo >> "$GITHUB_STEP_SUMMARY"
       - shell: bash
-        run: |
-          echo bar >> "$GITHUB_STEP_SUMMARY"
+        run: echo bar >> "$GITHUB_STEP_SUMMARY"
