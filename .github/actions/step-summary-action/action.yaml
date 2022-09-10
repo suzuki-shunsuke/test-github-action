@@ -1,0 +1,15 @@
+name: gha-trigger step summary
+description: gha-trigger step summary
+inputs:
+  data:
+    description: gha-trigger's workflow dispatch input
+    required: true
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        echo foo >> "$GITHUB_STEP_SUMMARY"
+    - shell: bash
+      run: |
+        echo bar >> "$GITHUB_STEP_SUMMARY"
