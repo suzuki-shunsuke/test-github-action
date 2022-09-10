@@ -10,4 +10,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: env | grep GITHUB_
+      - cat "$GITHUB_EVENT_PATH"
       - uses: actions/checkout@v3
