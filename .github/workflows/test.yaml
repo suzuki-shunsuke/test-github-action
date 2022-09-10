@@ -9,6 +9,5 @@ jobs:
   foo:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "::notice title=How to cancel the workflow::/cancel $GITHUB_RUN_ID"
-      - run: sleep 30
+      - run: echo foo >> "$GITHUB_STEP_SUMMARY"
+      - run: echo bar >> "$GITHUB_STEP_SUMMARY"
