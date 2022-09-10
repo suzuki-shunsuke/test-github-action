@@ -1,0 +1,46 @@
+name: gha-trigger step summary
+description: gha-trigger step summary
+inputs:
+  data:
+    description: gha-trigger's workflow dispatch input
+    required: true
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        cat << EOS >> "$GITHUB_STEP_SUMMARY"
+
+        [Pull Request]($PR_URL)
+
+        ## How to rerun or cancel the Workflow and jobs
+        
+        Please post a comment to the [Pull Request]($PR_URL).
+
+        EOS
+      env:
+        PR_URL: https://github.com/suzuki-shunsuke/test-github-action/pull/110
+    - shell: bash
+      run: |
+        cat << EOS >> "$GITHUB_STEP_SUMMARY"
+
+        Rerun the workflow.
+
+        $CODE_BLOCK
+        /rerun-workflow $GITHUB_RUN_ID
+        $CODE_BLOCK
+
+        Rerun failed jobs.
+
+        $CODE_BLOCK
+        /rerun-failed-job $GITHUB_RUN_ID
+        $CODE_BLOCK
+
+        Cancel the workflow.
+
+        $CODE_BLOCK
+        /cancel $GITHUB_RUN_ID
+        $CODE_BLOCK
+        EOS
+      env:
+        CODE_BLOCK: "```"
