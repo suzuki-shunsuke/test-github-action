@@ -3,27 +3,11 @@ name: Test
 on:
   pull_request:
     branches: [main]
-  push:
-    branches: [main]
+    types:
+      - closed
 jobs:
   foo:
     runs-on: ubuntu-latest
-    outputs:
-      env: ${{steps.yaml-data.outputs.data}}
     steps:
+      - run: env | grep GITHUB_
       - uses: actions/checkout@v3
-      - id: yaml-data
-        uses: KJ002/read-yaml@1.6
-        with:
-          file: ./data.yaml
-          key-path: '["envs"]'
-  zoo:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        env: ${{fromJSON(needs.foo.outputs.env)}}
-    needs:
-      - foo
-    steps:
-      - run: echo "${{ matrix.env.id }}"
