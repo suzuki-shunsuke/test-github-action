@@ -9,7 +9,7 @@ jobs:
   foo:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "::set-output name=name::foo"
+      - run: echo "name=foo" >> "$GITHUB_OUTPUT"
         id: name
       - run: echo "$NAME"
         env:
