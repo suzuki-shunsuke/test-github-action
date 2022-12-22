@@ -7,23 +7,11 @@ on:
     branches: [main]
 jobs:
   foo:
-    runs-on: ubuntu-latest
-    outputs:
-      env: ${{steps.yaml-data.outputs.data}}
+    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
-      - id: yaml-data
-        uses: KJ002/read-yaml@1.6
-        with:
-          file: ./data.yaml
-          key-path: '["envs"]'
-  zoo:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        env: ${{fromJSON(needs.foo.outputs.env)}}
-    needs:
-      - foo
-    steps:
-      - run: echo "${{ matrix.env.id }}"
+      - run: |
+           echo $GITHUB_PATH
+        shell: bash
+      - run: |
+          echo $env:GITHUB_PATH
+        shell: pwsh
