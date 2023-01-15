@@ -29,14 +29,15 @@ jobs:
             action: ${{ github.event.action }}
             tag: ${{ github.event.release.tag_name }}
             html_url: ${{ github.event.release.html_url }}
-      # - uses: slackapi/slack-github-action@v1.23.0
-      #   with:
-      #     channel-id: 'CHANNEL_ID,ANOTHER_CHANNEL_ID'
-      #     # For posting a simple plain text message
-      #     slack-message: |
-      #       event type:
-      #       repository:
-      #       tag_name:
-      #       ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}
-      #   env:
-      #     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      - uses: slackapi/slack-github-action@v1.23.0
+        with:
+          channel-id: D3LG8NSNB
+          # For posting a simple plain text message
+          slack-message: |
+            repository: ${{ github.repository }}
+            event: ${{ github.event_name }}
+            action: ${{ github.event.action }}
+            tag: ${{ github.event.release.tag_name }}
+            html_url: ${{ github.event.release.html_url }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
