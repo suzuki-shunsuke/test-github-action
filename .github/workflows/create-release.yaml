@@ -4,8 +4,9 @@ on:
   release:
     types:
       - unpublished
-      - released
-      - prereleased
+      - published
+      # - released
+      # - prereleased
       - edited
 # created: A draft was saved, or a release or pre-release was published without previously being saved as a draft.
 # deleted: A release, pre-release, or draft release was deleted.
