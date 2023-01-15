@@ -7,7 +7,7 @@ jobs:
     steps:
       - run: echo "$EVENT"
         env:
-          EVENT: ${{ github }}
+          EVENT: ${{ toJSON(github) }}
       # - uses: slackapi/slack-github-action@v1.23.0
       #   with:
       #     channel-id: 'CHANNEL_ID,ANOTHER_CHANNEL_ID'
