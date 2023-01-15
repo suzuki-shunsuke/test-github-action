@@ -1,0 +1,21 @@
+---
+name: Notify release Creation
+on: release
+jobs:
+  notify-release-creation:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "$EVENT"
+        env:
+          EVENT: ${{ github }}
+      # - uses: slackapi/slack-github-action@v1.23.0
+      #   with:
+      #     channel-id: 'CHANNEL_ID,ANOTHER_CHANNEL_ID'
+      #     # For posting a simple plain text message
+      #     slack-message: |
+      #       event type:
+      #       repository:
+      #       tag_name:
+      #       ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}
+      #   env:
+      #     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
