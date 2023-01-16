@@ -3,15 +3,13 @@ name: Notify release Creation
 on:
   release:
     types:
-      # release is created
-      # release is deleted
-      # prelease or draft are changed to release
-      # release is changed to prerelease
-      - unpublished
+      - created
+      - deleted
+      - edited
+      - prereleased
       - published
       - released
-      - prereleased
-      - edited
+      - unpublished
 # created: A draft was saved, or a release or pre-release was published without previously being saved as a draft.
 # deleted: A release, pre-release, or draft release was deleted.
 # edited: The details of a release, pre-release, or draft release were edited. https://docs.github.com/repositories/releasing-projects-on-github/managing-releases-in-a-repository#editing-a-release
