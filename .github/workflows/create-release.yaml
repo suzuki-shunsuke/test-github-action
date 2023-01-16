@@ -3,10 +3,14 @@ name: Notify release Creation
 on:
   release:
     types:
+      # release is created
+      # release is deleted
+      # prelease or draft are changed to release
+      # release is changed to prerelease
       - unpublished
       - published
-      # - released
-      # - prereleased
+      - released
+      - prereleased
       - edited
 # created: A draft was saved, or a release or pre-release was published without previously being saved as a draft.
 # deleted: A release, pre-release, or draft release was deleted.
