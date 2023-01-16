@@ -32,7 +32,7 @@ jobs:
             html_url: ${{ github.event.release.html_url }}
       - uses: slackapi/slack-github-action@v1.23.0
         with:
-          channel-id: D3LG8NSNB
+          channel-id: D04K2NG5LKE
           # For posting a simple plain text message
           slack-message: |
             repository: ${{ github.repository }}
