@@ -7,7 +7,6 @@ jobs:
   foo:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "$CTX"
+      - run: echo "$CTX"
         env:
-          CTX: ${{ github }}
+          CTX: ${{ toJSON(github) }}
