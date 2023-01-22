@@ -4,13 +4,18 @@ on: pull_request
 jobs:
   foo:
     runs-on: ubuntu-latest
-    if: failure()
     steps:
       - run: echo hello
+  bar:
+    runs-on: ubuntu-latest
+    if: "false"
+    steps:
+      - run: echo bar
   zoo:
     runs-on: ubuntu-latest
-    if: "! failure()"
+    if: "success()"
     needs:
       - foo
+      - bar
     steps:
       - run: echo hello
