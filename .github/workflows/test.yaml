@@ -9,7 +9,7 @@ jobs:
       - run: echo hello
   zoo:
     runs-on: ubuntu-latest
-    if: success()
+    if: "! failure()"
     needs:
       - foo
     steps:
