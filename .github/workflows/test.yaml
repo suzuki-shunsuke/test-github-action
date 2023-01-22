@@ -14,7 +14,7 @@ jobs:
   zoo:
     runs-on: ubuntu-latest
     if: |
-      github.event.pull_request.user.login == 'suzuki-shunsuke'
+      ! failure() && github.event.pull_request.user.login == 'suzuki-shunsuke'
     needs:
       - foo
       - bar
