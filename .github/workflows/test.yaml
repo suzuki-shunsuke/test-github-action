@@ -5,7 +5,7 @@ jobs:
   foo:
     runs-on: ubuntu-latest
     steps:
-      - run: "true"
+      - run: "false"
   bar:
     runs-on: ubuntu-latest
     if: "false"
