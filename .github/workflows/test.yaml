@@ -13,7 +13,8 @@ jobs:
       - run: echo bar
   zoo:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'suzuki-shunsuke'
+    if: |
+      always() && github.event.pull_request.user.login == 'suzuki-shunsuke'
     needs:
       - foo
       - bar
