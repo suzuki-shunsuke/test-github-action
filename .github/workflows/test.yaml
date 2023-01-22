@@ -1,29 +1,16 @@
 ---
 name: Test
-on:
-  pull_request:
-    branches: [main]
-  push:
-    branches: [main]
+on: pull_request
 jobs:
   foo:
     runs-on: ubuntu-latest
-    outputs:
-      env: ${{steps.yaml-data.outputs.data}}
+    if: failure()
     steps:
-      - uses: actions/checkout@v3
-      - id: yaml-data
-        uses: KJ002/read-yaml@1.6
-        with:
-          file: ./data.yaml
-          key-path: '["envs"]'
+      - run: echo hello
   zoo:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        env: ${{fromJSON(needs.foo.outputs.env)}}
+    if: success()
     needs:
       - foo
     steps:
-      - run: echo "${{ matrix.env.id }}"
+      - run: echo hello
