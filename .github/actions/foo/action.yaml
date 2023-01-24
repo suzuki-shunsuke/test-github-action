@@ -1,0 +1,16 @@
+name: foo
+description: foo
+inputs:
+  github_token:
+    description: 'GitHub Access Token'
+    required: false
+    default: ${{github.token}}
+runs:
+  using: composite
+  steps:
+    - run: |
+        gh api \
+          -H "Accept: application/vnd.github+json" \
+          /user
+      env:
+        GITHUB_TOKEN: ${{inputs.github_token}}
