@@ -12,5 +12,6 @@ runs:
         gh api \
           -H "Accept: application/vnd.github+json" \
           /user
+      shell: bash
       env:
         GITHUB_TOKEN: ${{inputs.github_token}}
