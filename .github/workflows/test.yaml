@@ -6,7 +6,7 @@ jobs:
   foo:
     runs-on: ubuntu-latest
     permissions:
-      pul-requests: write
+      pull-requests: write
     steps:
       - run: gh -R aquaproj/example-update-checksum pr review -a "$PR_NUMBER"
         env:
