@@ -3,7 +3,7 @@ name: Test
 on:
   pull_request: {}
 jobs:
-  foo:
+  actionlint:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
