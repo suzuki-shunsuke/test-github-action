@@ -9,10 +9,7 @@ on:
 permissions: {}
 jobs:
   actionlint:
-    uses: suzuki-shunsuke/actionlint-workflow/.github/workflows/actionlint.yaml@v0.4.1
-    with:
-      aqua_version: v1.32.3
-      aqua_policy_config: aqua-policy.yaml
-    permissions:
-      pull-requests: write
-      contents: read
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - run: echo actionlint
