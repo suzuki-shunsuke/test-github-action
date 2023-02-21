@@ -1,9 +1,0 @@
----
-name: check event
-on: push
-jobs:
-  foo:
-    runs-on: ubuntu-latest
-    steps:
-      - run: env | grep GITHUB_
-      - run: cat "$GITHUB_EVENT_PATH"

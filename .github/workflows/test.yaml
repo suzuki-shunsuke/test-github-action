@@ -1,14 +1,9 @@
 ---
-name: Test
-on:
-  pull_request: {}
+name: update pull request branch by pull request comment
+on: issue_comment
 jobs:
-  foo:
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-    steps:
-      - run: gh -R "$GITHUB_REPOSITORY" pr review -a "$PR_NUMBER"
-        env:
-          GITHUB_TOKEN: ${{github.token}}
-          PR_NUMBER: ${{github.event.number}}
+  update-branch:
+    uses: suzuki-shunsuke/update-branch-workflow/.github/workflows/update-branch.yaml@feat/first-pr
+    secrets:
+      gh_app_id: ${{secrets.APP_ID}}
+      gh_app_private_key: ${{secrets.APP_PRIVATE_KEY}}
