@@ -1,28 +1,9 @@
 ---
-name: update-checksum-action
-on:
-  pull_request: {}
+name: update pull request branch by pull request comment
+on: issue_comment
 jobs:
-  update-checksum-action:
-    runs-on: ubuntu-latest
-    permissions: {}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
-      - uses: aquaproj/aqua-installer@61e2563dfe7674cbf74fe6ec212e444198a3bb00 # v2.0.2
-        # Install ghcp
-        with:
-          aqua_version: v1.33.0
-        env:
-          AQUA_GITHUB_TOKEN: ${{github.token}}
-      - name: Generate token
-        id: generate_token
-        uses: tibdex/github-app-token@021a2405c7f990db57f5eae5397423dcc554159c # v1
-        with:
-          app_id: ${{secrets.APP_ID}}
-          private_key: ${{secrets.APP_PRIVATE_KEY}}
-      - uses: aquaproj/update-checksum-action@fix/check-ghcp
-        with:
-          prune: true
-        env:
-          GITHUB_TOKEN: ${{steps.generate_token.outputs.token}}
+  update-branch:
+    uses: suzuki-shunsuke/update-branch-workflow/.github/workflows/update-branch.yaml@feat/first-pr
+    secrets:
+      gh_app_id: ${{secrets.APP_ID}}
+      gh_app_private_key: ${{secrets.APP_PRIVATE_KEY}}
