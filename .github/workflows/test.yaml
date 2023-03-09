@@ -1,9 +1,8 @@
 ---
-name: Test
-on:
-  pull_request: {}
+name: go mod tidy
+on: pull_request
 jobs:
-  foo:
+  test:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
