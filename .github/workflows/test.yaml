@@ -17,6 +17,12 @@ jobs:
       - uses: aquaproj/aqua-installer@61e2563dfe7674cbf74fe6ec212e444198a3bb00 # v2.0.2
         with:
           aqua_version: v1.35.0
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{secrets.APP_ID}}
+          private_key: ${{secrets.APP_PRIVATE_KEY}}
       - uses: suzuki-shunsuke/go-mod-tidy-action@feat/first-pr
         with:
-          github_token: ${{github.token}}
+          github_token: ${{steps.generate_token.outputs.token}}
