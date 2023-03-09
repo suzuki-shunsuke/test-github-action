@@ -2,7 +2,7 @@ module github.com/suzuki-shunsuke/test-github-action
 
 go 1.20
 
-require github.com/sirupsen/logrus v1.8.0
+require github.com/sirupsen/logrus v1.9.0
 
 require (
 	github.com/magefile/mage v1.10.0 // indirect
