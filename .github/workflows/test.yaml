@@ -9,6 +9,7 @@ jobs:
     with:
       aqua_version: v1.36.0
       prune: true
+      working_directory: foo
     secrets:
       gh_app_id: ${{secrets.APP_ID}}
       gh_app_private_key: ${{secrets.APP_PRIVATE_KEY}}
