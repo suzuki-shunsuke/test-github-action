@@ -1,6 +1,6 @@
 ---
 name: test
-on: push
+on: pull_request
 jobs:
   update-aqua-checksums:
     uses: aquaproj/update-checksum-workflow/.github/workflows/update-checksum.yaml@chore/update-checksum-action
