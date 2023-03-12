@@ -3,7 +3,7 @@ name: test
 on: push
 jobs:
   update-aqua-checksums:
-    uses: aquaproj/update-checksum-workflow/.github/workflows/update-checksum.yaml@v0.1.3
+    uses: aquaproj/update-checksum-workflow/.github/workflows/update-checksum.yaml@chore/update-checksum-action
     permissions:
       contents: read
     with:
