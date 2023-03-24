@@ -2,13 +2,15 @@
 name: test
 on: pull_request
 jobs:
-  update-aqua-checksums:
-    uses: aquaproj/update-checksum-workflow/.github/workflows/update-checksum.yaml@fix/fix-ref
-    permissions:
-      contents: read
-    with:
-      aqua_version: v1.36.0
-      prune: true
-    secrets:
-      gh_app_id: ${{secrets.APP_ID}}
-      gh_app_private_key: ${{secrets.APP_PRIVATE_KEY}}
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 60
+  foo:
+    runs-on: ubuntu-latest
+    if: |
+      ! failure() && ! cancelled()
+    needs:
+      - setup
+    steps:
+      - run: echo hello
