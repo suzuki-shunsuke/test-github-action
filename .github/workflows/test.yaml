@@ -15,3 +15,14 @@ jobs:
       - run: ci-info run
         env:
           GITHUB_TOKEN: ${{github.token}}
+  update-aqua-checksums:
+    uses: aquaproj/update-checksum-workflow/.github/workflows/update-checksum.yaml@feat/policy_allow
+    permissions:
+      contents: read
+    with:
+      aqua_version: v2.3.0-3
+      prune: true
+      policy_allow: "true"
+    secrets:
+      gh_app_id: ${{secrets.APP_ID}}
+      gh_app_private_key: ${{secrets.APP_PRIVATE_KEY}}
