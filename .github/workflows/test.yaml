@@ -2,13 +2,16 @@
 name: test
 on: pull_request
 jobs:
-  update-aqua-checksums:
-    uses: aquaproj/update-checksum-workflow/.github/workflows/update-checksum.yaml@fix/fix-ref
-    permissions:
-      contents: read
-    with:
-      aqua_version: v1.36.0
-      prune: true
-    secrets:
-      gh_app_id: ${{secrets.APP_ID}}
-      gh_app_private_key: ${{secrets.APP_PRIVATE_KEY}}
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
+      - uses: aquaproj/aqua-installer@feat/policy_file
+        with:
+          aqua_version: v2.3.0-3
+          policy_allow: "true"
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+      - run: ci-info run
+        env:
+          GITHUB_TOKEN: ${{github.token}}

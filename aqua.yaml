@@ -9,6 +9,11 @@ checksum:
 registries:
   - type: standard
     ref: v3.126.0 # renovate: depName=aquaproj/aqua-registry
+  - name: local
+    type: local
+    path: registry.yaml
 packages:
   # Split packages per package with `import` to avoid pull requests' conflict
   - import: aqua/*.yaml
+  - name: suzuki-shunsuke/ci-info@v2.1.2
+    registry: local
