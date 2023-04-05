@@ -9,7 +9,5 @@ jobs:
   bar:
     needs: foo
     runs-on: ubuntu-latest
-    if: |
-      github.event.pull_request.user.login == 'renovate[bot]' && contains(github.event.pull_request.body, ' **Automerge**: Enabled.')
     steps:
       - run: exit 0
