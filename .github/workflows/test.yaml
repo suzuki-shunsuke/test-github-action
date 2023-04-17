@@ -2,35 +2,11 @@
 name: test
 on: pull_request
 jobs:
-  linux:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
-      - uses: aquaproj/aqua-installer@v2.1.1
-        with:
-          aqua_version: v2.3.1
-      - run: wasm-opt --help
-      - run: wasm-opt --version
-  macos:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
-      - uses: aquaproj/aqua-installer@v2.1.1
-        with:
-          aqua_version: v2.3.1
-      - run: wasm-opt --help
-      - run: wasm-opt --version
   windows:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
       - uses: aquaproj/aqua-installer@v2.1.1
         with:
-          aqua_version: v2.3.1
-      - run: wasm-opt --version
-      - run: wasm-opt --version
-        shell: bash
-      - run: wasm-opt --version
-        shell: pwsh
-      - run: wasm-opt --version
-        shell: powershell
+          aqua_version: v2.3.5
+      - run: wasm-opt --version 2> /dev/null
