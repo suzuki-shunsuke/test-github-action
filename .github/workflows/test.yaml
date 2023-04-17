@@ -10,3 +10,4 @@ jobs:
         with:
           aqua_version: v2.3.5
       - run: wasm-opt --version 2> /dev/null
+        shell: bash
