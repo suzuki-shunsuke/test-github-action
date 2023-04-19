@@ -24,5 +24,6 @@ jobs:
               -reporter github-pr-check \
               -level warning \
               -fail-on-error
+          echo "$?"
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{github.token}}
