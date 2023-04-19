@@ -11,7 +11,7 @@ jobs:
       - uses: aquaproj/aqua-installer@v2.1.1
         with:
           aqua_version: v2.3.6
-      - run: reviewdog -v
+      - run: reviewdog --version
       - run: tflint -v
       - run: |
           tflint --format checkstyle --module || :
