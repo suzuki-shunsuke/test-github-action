@@ -13,7 +13,7 @@ jobs:
       - run: |
           tflint --format checkstyle --module |
             reviewdog \
-              -f rdjson \
+              -f checkstyle \
               -name tflint \
               -filter-mode nofilter \
               -reporter github-pr-check \
