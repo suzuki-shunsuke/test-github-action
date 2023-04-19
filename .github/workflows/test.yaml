@@ -6,3 +6,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+      - uses: aquaproj/aqua-installer@v2.1.1
+        with:
+          aqua_version: v2.3.6
+      - run: tflint -v
+      - run: |
+          tflint --format json --module '.' |
+            reviewdog \
+              -f rdjson \
+              -name tflint \
+              -filter-mode nofilter \
+              -reporter github-pr-check \
+              -level warning \
+              -fail-on-error 1
+      - run: tflint
