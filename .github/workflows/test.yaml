@@ -12,7 +12,8 @@ jobs:
         with:
           aqua_version: v2.3.6
       - run: tflint -v
-      - run: tflint --format checkstyle --module || :
+      - run: |
+          tflint --format checkstyle --module || :
       - run: |
           tflint --format checkstyle --module |
             reviewdog \
