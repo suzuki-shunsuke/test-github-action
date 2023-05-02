@@ -10,4 +10,4 @@ jobs:
         with:
           aqua_version: v2.3.7
       - run: |
-          act workflow_dispatch
+          act workflow_dispatch -W .github/workflows/test.yaml -P ubuntu-latest=catthehacker/ubuntu:act-latest
