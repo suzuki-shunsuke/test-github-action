@@ -12,3 +12,4 @@ registries:
 packages:
   # Split packages per package with `import` to avoid pull requests' conflict
   - import: aqua/*.yaml
+  - name: nektos/act@v0.2.45
