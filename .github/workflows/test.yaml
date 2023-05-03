@@ -12,7 +12,7 @@ jobs:
           path: aquaproj-aqua
       - uses: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9 # v4.0.0
         with:
-          go-version: ${{inputs.go-version}}
+          go-version: 1.20.4
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@1005f9c9db5f1b055a495e72c6e589764984baf6 # v3.14
         with:
