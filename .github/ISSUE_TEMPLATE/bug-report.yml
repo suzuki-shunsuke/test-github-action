@@ -23,7 +23,6 @@ body:
         $ aqua -v
 
         ```
-      render: bash
     validations:
       required: true
   - type: textarea
@@ -36,7 +35,6 @@ body:
       value: |
         * OS:
         * CPU Architecture:
-      render: bash
     validations:
       required: true
   - type: textarea
@@ -44,7 +42,6 @@ body:
     attributes:
       label: Overview
       value:
-      render: bash
     validations:
       required: true
   - type: textarea
@@ -73,7 +70,6 @@ body:
         ```console
         $ 
         ```
-      render: bash
     validations:
       required: true
   - type: textarea
@@ -85,7 +81,6 @@ body:
         ```console
         $ 
         ```
-      render: bash
     validations:
       required: false
   - type: textarea
@@ -93,7 +88,6 @@ body:
     attributes:
       label: Expected behaviour
       value:
-      render: bash
     validations:
       required: true
   - type: textarea
@@ -101,7 +95,6 @@ body:
     attributes:
       label: Actual behaviour
       value:
-      render: bash
     validations:
       required: true
   - type: textarea
@@ -109,7 +102,6 @@ body:
     attributes:
       label: Important Factoids
       value:
-      render: bash
     validations:
       required: false
   - type: textarea
@@ -118,6 +110,5 @@ body:
       label: Reference
       value: |
         *
-      render: bash
     validations:
       required: false
