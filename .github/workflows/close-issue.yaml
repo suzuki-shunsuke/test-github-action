@@ -1,0 +1,15 @@
+name: Close issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  close-issue:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - run: echo "BODY"
+        env:
+          BODY: ${{github}}
