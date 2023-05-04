@@ -5,7 +5,8 @@ body:
   - type: textarea
     id: aqua-version
     attributes:
-      description: aqua version. Please use the latest version.
+      label: aqua version
+      description: Please use the latest version.
       value: |
         ```console
         $ aqua -v
@@ -17,7 +18,7 @@ body:
   - type: textarea
     id: environment
     attributes:
-      description: Environment
+      label: Environment
       value: |
         * OS (Windows, Linux, macOS, etc):
         * CPU Architecture (amd64, arm64, etc):
@@ -27,15 +28,15 @@ body:
   - type: textarea
     id: overview
     attributes:
-      description: Overview
-      value: |
+      label: Overview
+      value:
       render: bash
     validations:
       required: true
   - type: textarea
     id: how-to-reproduce
     attributes:
-      description: How to reproduce
+      label: How to reproduce
       value: |
         * aqua.yaml
         * executed command and output
@@ -57,7 +58,8 @@ body:
   - type: textarea
     id: debug-output
     attributes:
-      description: Debug output. Please set the environment variable `AQUA_LOG_LEVEL=debug` and run aqua and tell us the debug output.
+      label: Debug output
+      description: Please set the environment variable `AQUA_LOG_LEVEL=debug` and run aqua and tell us the debug output.
       value: |
         ```console
         $ 
@@ -68,7 +70,7 @@ body:
   - type: textarea
     id: expected-behaviour
     attributes:
-      description: Expected behaviour
+      label: Expected behaviour
       value:
       render: bash
     validations:
@@ -76,7 +78,7 @@ body:
   - type: textarea
     id: actual-behaviour
     attributes:
-      description: Actual behaviour
+      label: Actual behaviour
       value:
       render: bash
     validations:
@@ -84,7 +86,7 @@ body:
   - type: textarea
     id: important-factoid
     attributes:
-      description: Important Factoids
+      label: Important Factoids
       value:
       render: bash
     validations:
@@ -92,7 +94,7 @@ body:
   - type: textarea
     id: reference
     attributes:
-      description: Reference
+      label: Reference
       value: |
         *
       render: bash
