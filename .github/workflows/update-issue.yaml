@@ -7,22 +7,8 @@ on:
 
 jobs:
   sync-issue:
-    runs-on: ubuntu-latest
+    uses: suzuki-shunsuke/tfaction/.github/workflows/sync-drift-issue-description.yaml@feat/detect-drift
     if: |
       !github.event.issue.pull_request && startsWith(github.event.issue.title, 'Terraform Drift (') && endsWith(github.event.issue.title, ')')
     permissions:
       issues: write
-    steps:
-      - run: gh -R "$GITHUB_REPOSITORY" issue edit "${{github.event.issue.number}}" -b "$BODY"
-        env:
-          GITHUB_TOKEN: ${{github.token}}
-          BODY: |
-            This issus was created by [tfaction](https://suzuki-shunsuke.github.io/tfaction/docs/).
-
-            About this issue, please see [the document](https://suzuki-shunsuke.github.io/tfaction/docs/feature/drift-detection).
-
-            ## Latest comment
-
-            [${{github.event.comment.created_at}}](${{github.event.comment.html_url}})
-
-            ${{github.event.comment.body}}
