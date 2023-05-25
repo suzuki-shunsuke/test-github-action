@@ -9,7 +9,7 @@ jobs:
   sync-issue:
     runs-on: ubuntu-latest
     if: |
-      !github.event.issue.pull_request && startsWith(github.event.issue.title, 'Terraform Drift (') && endsWith(github.event.issue.title, ')') && github.actor = 'suzuki-shunsuke'
+      !github.event.issue.pull_request && startsWith(github.event.issue.title, 'Terraform Drift (') && endsWith(github.event.issue.title, ')') && github.actor == 'suzuki-shunsuke'
     permissions:
       issues: write
     steps:
