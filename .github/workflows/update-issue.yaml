@@ -7,8 +7,10 @@ on:
 
 jobs:
   sync-issue:
-    uses: suzuki-shunsuke/tfaction/.github/workflows/sync-drift-issue-description.yaml@feat/detect-drift
+    runs-on: ubuntu-latest
     if: |
       !github.event.issue.pull_request && startsWith(github.event.issue.title, 'Terraform Drift (') && endsWith(github.event.issue.title, ')')
     permissions:
       issues: write
+    steps:
+      - uses: suzuki-shunsuke/tfaction/sync-drift-issue-description@feat/detect-drift
