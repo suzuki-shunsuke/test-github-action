@@ -3,7 +3,7 @@ name: test
 on:
   pull_request:
     paths-ignore:
-      - README.md
+      - .github/workflows/test.yaml
 jobs:
   test:
     runs-on: ubuntu-latest

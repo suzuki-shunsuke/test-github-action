@@ -1,6 +1,7 @@
 # test-github-action
 
 test
+test
 
 ## LICENSE
 
