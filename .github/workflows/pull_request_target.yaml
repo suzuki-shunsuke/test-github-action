@@ -1,0 +1,9 @@
+---
+name: 'Pull Request target'
+on: [pull_request_target]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: echo "$GITHUB_SHA"
