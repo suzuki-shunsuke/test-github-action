@@ -4,6 +4,7 @@ on:
     paths:
       - aqua.yaml
       - aqua-checksums.json
+      - .github/workflows/update-checksum.yaml
 jobs:
   update-aqua-checksums:
     uses: aquaproj/update-checksum-workflow/.github/workflows/update-checksum.yaml@feat/support-changing-runs-on
