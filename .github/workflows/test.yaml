@@ -10,6 +10,10 @@ jobs:
       - uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
       - uses: aquaproj/aqua-installer@fix/support-container
         with:
-          aqua_version: v2.9.0
+          aqua_version: v2.8.0
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+      - run: aqua -v
+      - run: ghcp -v
         env:
           GITHUB_TOKEN: ${{github.token}}
