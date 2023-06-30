@@ -8,3 +8,4 @@ jobs:
       - run: |
           false | echo foo
           echo bar
+        shell: bash -eu -o pipefail {0}
