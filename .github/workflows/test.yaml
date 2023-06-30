@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          set -euv -o pipefail
+          set -eu -o pipefail
           echo "$FOO"
           echo bar
