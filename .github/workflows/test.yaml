@@ -7,5 +7,4 @@ jobs:
     steps:
       - run: |
           set -eu -o pipefail
-          echo "$FOO"
-          echo bar
+          false | echo bar
