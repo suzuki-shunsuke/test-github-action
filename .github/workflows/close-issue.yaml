@@ -10,7 +10,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: suzuki-shunsuke/issue-close-lock-action@main
+      - uses: suzuki-shunsuke/issue-close-lock-action@76224b6951a62432234a88eddfd7d7070c2250a8 # main
         with:
           issue_number: ${{github.event.issue.number}}
           is_lock: "false"
