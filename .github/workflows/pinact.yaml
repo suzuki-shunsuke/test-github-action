@@ -36,7 +36,6 @@ jobs:
         id: files
         with:
           script: |
-            const exec = require('@actions/exec')
             await exec.exec('git ls-files .github');
           result-encoding: string
 
