@@ -32,6 +32,15 @@ jobs:
           github_app_id: ${{secrets.APP_ID}}
           github_app_private_key: ${{secrets.APP_PRIVATE_KEY}}
 
+      - uses: actions/github-script@v6
+        id: files
+        with:
+          script: |
+            const exec = require('@actions/exec')
+            await exec.exec('git ls-files .github');
+          result-encoding: string
+
       - uses: ./.github/actions/pinact
         with:
           github_token: ${{steps.generate_token.outputs.token}}
+          files: ${{steps.files.outputs.result}}

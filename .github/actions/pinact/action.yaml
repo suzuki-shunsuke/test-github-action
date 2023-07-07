@@ -7,11 +7,21 @@ inputs:
   skip_push:
     required: false
     default: false
+  files:
+    required: false
+    default: false
 runs:
   using: composite
   steps:
     - shell: bash
+      if: inputs.files == ''
       run: git ls-files .github | xargs pinact run
+    - shell: bash
+      run: echo "$FILES" | xargs pinact run
+      if: inputs.files != ''
+      env:
+        FILES: ${{inputs.files}}
+
     - shell: bash
       if: fromJSON(inputs.skip_push)
       run: |
