@@ -36,7 +36,8 @@ jobs:
         id: files
         with:
           script: |
-            return exec.getExecOutput('git ls-files .github').stdout;
+            const { stdout: stdout } = await exec.getExecOutput('git ls-files .github');
+            return stdout;
           result-encoding: string
 
       - uses: ./.github/actions/pinact
