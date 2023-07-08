@@ -18,7 +18,7 @@ jobs:
         with:
           ref: ${{github.event.pull_request.head.sha}}
 
-      - uses: aquaproj/aqua-installer@v2.1.2
+      - uses: aquaproj/aqua-installer@36dc5833b04eb63f06e3bb818aa6b7a6e6db99a9 # v2.1.2
         with:
           aqua_version: v2.9.0
         env:
@@ -32,6 +32,6 @@ jobs:
           github_app_id: ${{secrets.APP_ID}}
           github_app_private_key: ${{secrets.APP_PRIVATE_KEY}}
 
-      - uses: suzuki-shunsuke/pinact-action@feat/first-pr
+      - uses: suzuki-shunsuke/pinact-action@99bb5d6a962f4e08aa5f0806410d9a6dcae12aea # feat/first-pr
         with:
           github_token: ${{steps.generate_token.outputs.token}}
