@@ -35,4 +35,3 @@ jobs:
       - uses: suzuki-shunsuke/pinact-action@feat/first-pr
         with:
           github_token: ${{steps.generate_token.outputs.token}}
-          skip_push: true
