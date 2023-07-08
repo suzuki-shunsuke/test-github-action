@@ -36,15 +36,7 @@ jobs:
         id: files
         with:
           script: |
-            let output = '';
-            const options = {};
-            options.listeners = {
-              stdout: (data) => {
-                output += data.toString();
-              },
-            };
-            await exec.exec('git ls-files .github', options);
-            return output;
+            return await exec.exec('git ls-files .github').stdout;
           result-encoding: string
 
       - uses: ./.github/actions/pinact
