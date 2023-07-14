@@ -11,7 +11,8 @@ jobs:
           script: |
             let createdAt = new Date(context.payload.pull_request.created_at)
             console.log(createdAt)
-            createdAt.setHours(createdAt.getHours() + 1)
+            createdAt.setMinutes(createdAt.getMinutes() + 1)
+            // createdAt.setHours(createdAt.getHours() + 1)
             console.log(createdAt)
             const now = new Date(Date.now())
             console.log(now)
