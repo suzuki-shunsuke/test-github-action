@@ -18,6 +18,6 @@ jobs:
             console.log(now)
             return createdAt > now
       - run: "true"
-        if: steps.my-script.outputs.result
+        if: fromJSON(steps.my-script.outputs.result)
         env:
           RESULT: ${{steps.my-script.outputs.result}}
