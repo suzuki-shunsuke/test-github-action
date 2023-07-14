@@ -10,11 +10,11 @@ jobs:
         with:
           script: |
             const createdAt = new Date(context.payload.pull_request.created_at)
-            console.log(`Created at: ${createdAt}`)
+            core.info(`Created at: ${createdAt}`)
             createdAt.setHours(createdAt.getHours() + 1)
             const now = new Date(Date.now())
-            console.log(`now: ${now}`)
-            console.log(`Check ${createdAt} (deadline) > ${now} (now)`)
+            core.info(`Now: ${now}`)
+            core.info(`Check ${createdAt} (deadline) > ${now} (now)`)
             return createdAt > now
       - run: "true"
         if: fromJSON(steps.my-script.outputs.result)
