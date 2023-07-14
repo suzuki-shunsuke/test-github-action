@@ -17,5 +17,4 @@ jobs:
             console.log(now)
             return createdAt > now
       - run: "true"
-        env:
-          CONTEXT: ${{steps.my-script.outputs.result}}
+        if: steps.my-script.outputs.result
