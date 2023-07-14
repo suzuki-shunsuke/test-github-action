@@ -9,13 +9,12 @@ jobs:
         id: my-script
         with:
           script: |
-            let createdAt = new Date(context.payload.pull_request.created_at)
-            console.log(createdAt)
-            // createdAt.setMinutes(createdAt.getMinutes() + 1)
+            const createdAt = new Date(context.payload.pull_request.created_at)
+            console.log(`Created at: ${createdAt}`)
             createdAt.setHours(createdAt.getHours() + 1)
-            console.log(createdAt)
             const now = new Date(Date.now())
-            console.log(now)
+            console.log(`now: ${now}`)
+            console.log(`Check ${createdAt} (deadline) > ${now} (now)`)
             return createdAt > now
       - run: "true"
         if: fromJSON(steps.my-script.outputs.result)
