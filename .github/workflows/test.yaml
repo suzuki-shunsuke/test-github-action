@@ -9,7 +9,13 @@ jobs:
         id: my-script
         with:
           script: |
-            return context
+            let createdAt = new Date(context.payload.pull_request.created_at)
+            console.log(createdAt)
+            createdAt.setHours(createdAt.getHours() + 1)
+            console.log(createdAt)
+            const now = Date.now()
+            console.log(now)
+            return createdAt > now
       - run: "true"
         env:
           CONTEXT: ${{steps.my-script.outputs.result}}
