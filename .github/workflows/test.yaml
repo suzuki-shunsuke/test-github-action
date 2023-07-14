@@ -5,4 +5,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+      - uses: actions/github-script@v6
+        id: my-script
+        with:
+          script: |
+            return context
+      - run: "true"
+        env:
+          CONTEXT: ${{steps.my-script.outputs.result}}
