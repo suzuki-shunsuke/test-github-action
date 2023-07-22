@@ -24,8 +24,8 @@ body:
         aqua.yaml should be not partial but complete configuration.
         Please remove unneeded configuration to reproduce the issue.
       value: |
-        - OS (Windows, Linux, macOS, etc):
-        - CPU Architecture (amd64, arm64, etc):
+        OS (Windows, Linux, macOS, etc):
+        CPU Architecture (amd64, arm64, etc):
 
         :warning: Please use the latest version
 
@@ -40,13 +40,13 @@ body:
 
         ```
 
-        Other related code such as local Registry
+        Other related code such as local Registry.
 
         ```
 
         ```
 
-        Executed command and output
+        Command and output.
 
         ```console
         $ 
@@ -55,6 +55,15 @@ body:
         #### Expected behavour
 
         #### Actual behavour
+        
+        #### What's the problem of actual behaviour
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Workaround
+      description: |
+        If you have any workaround, please explain it and why the workaround isn't enough.
 
   - type: textarea
     id: example-code
@@ -79,6 +88,6 @@ body:
     attributes:
       label: Reference
       value: |
-        *
+        -
     validations:
       required: false
