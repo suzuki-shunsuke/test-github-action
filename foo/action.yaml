@@ -1,5 +1,6 @@
 name: foo
 description: foo
+
 runs:
   using: composite
   steps:
