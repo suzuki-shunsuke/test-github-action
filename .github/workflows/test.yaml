@@ -5,4 +5,19 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+      - uses: actions/github-script@v6
+        id: my-script
+        with:
+          script: |
+            const createdAt = new Date(context.payload.pull_request.created_at)
+            core.info(`Created at: ${createdAt.toISOString()}`)
+            createdAt.setHours(createdAt.getHours() + 1)
+            core.info(`Deadline  : ${createdAt.toISOString()}`)
+            const now = new Date(Date.now())
+            core.info(`Now       : ${now.toISOString()}`)
+            core.info(`Compare ${createdAt.toISOString()} > ${now.toISOString()}`)
+            return createdAt > now
+      - run: "true"
+        if: fromJSON(steps.my-script.outputs.result)
+        env:
+          RESULT: ${{steps.my-script.outputs.result}}
