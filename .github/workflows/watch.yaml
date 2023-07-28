@@ -8,7 +8,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: ":"
+      - run: gh issue comment 167 --body "$BODY"
         env:
           PAYLOAD: ${{toJSON(github)}}
-
+          BODY: |
+            [${{github.event.sender.url}}](${{github.event.sender.html_url}}) starred :star:
+          GITHUB_TOKEN: ${{github.token}}
