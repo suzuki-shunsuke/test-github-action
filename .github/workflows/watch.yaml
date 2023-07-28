@@ -3,7 +3,7 @@ name: watch
 on:
   watch:
     types:
-      - starred
+      - started
 jobs:
   test:
     runs-on: ubuntu-latest
