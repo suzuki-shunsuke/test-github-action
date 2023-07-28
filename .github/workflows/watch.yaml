@@ -7,8 +7,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
-      - run: gh issue comment 167 --body "$BODY"
+      - run: gh -R "$GITHUB_REPOSITORY" issue comment 167 --body "$BODY"
         env:
           PAYLOAD: ${{toJSON(github)}}
           BODY: |
