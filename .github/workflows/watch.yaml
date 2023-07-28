@@ -1,0 +1,14 @@
+---
+name: watch
+on:
+  watch:
+    types:
+      - starred
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ":"
+        env:
+          PAYLOAD: ${{toJSON(github)}}
+
