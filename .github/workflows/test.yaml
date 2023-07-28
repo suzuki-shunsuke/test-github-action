@@ -2,7 +2,31 @@
 name: test
 on: pull_request
 jobs:
+  test-container:
+    runs-on: ubuntu-latest
+    container:
+      image: golang:1.20
+    steps:
+      - uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+      - uses: aquaproj/aqua-installer@v2.1.2
+        with:
+          aqua_version: v2.8.0
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+      - run: aqua -v
+      - run: ghcp -v
+        env:
+          GITHUB_TOKEN: ${{github.token}}
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+      - uses: aquaproj/aqua-installer@v2.1.2
+        with:
+          aqua_version: v2.8.0
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+      - run: aqua -v
+      - run: ghcp -v
+        env:
+          GITHUB_TOKEN: ${{github.token}}
