@@ -3,6 +3,23 @@ name: test
 on: pull_request
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        with:
+          repository: 'aquaproj/aqua'
+          path: aquaproj-aqua
+      - uses: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9 # v4.0.0
+        with:
+          go-version: 1.20.4
+      - uses: rhysd/action-setup-vim@015df8c5b8dabdca7febe31bb66c156c0d780374 # v1.2.15
+      - uses: rhysd/action-setup-vim@015df8c5b8dabdca7febe31bb66c156c0d780374 # v1.2.15
+        with:
+          neovim: true
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@1005f9c9db5f1b055a495e72c6e589764984baf6 # v3.14
+        with:
+          limit-access-to-actor: true
+        env:
+          GITHUB_TOKEN: ${{github.token}}
