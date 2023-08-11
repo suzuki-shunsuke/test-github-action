@@ -1,0 +1,20 @@
+---
+name: watch
+on:
+  watch:
+    types:
+      - started
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - run: gh -R "$GITHUB_REPOSITORY" issue comment 167 --body "$BODY"
+        env:
+          PAYLOAD: ${{toJSON(github)}}
+          BODY: |
+            [${{github.event.sender.login}}](${{github.event.sender.html_url}}) starred :star:
+
+            <img width="32" alt="image" src="${{github.event.sender.avatar_url}}">
+          GITHUB_TOKEN: ${{github.token}}

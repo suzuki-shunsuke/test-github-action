@@ -2,7 +2,6 @@
 
 test
 test
-test
 
 ## LICENSE
 

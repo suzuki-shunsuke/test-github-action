@@ -1,0 +1,16 @@
+name: Close issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  close-issue:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: suzuki-shunsuke/issue-close-lock-action@main
+        with:
+          issue_number: ${{github.event.issue.number}}
+          is_lock: "false"
