@@ -1,8 +1,13 @@
 ---
-name: test
-on: pull_request
+name: Test
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+      - run: choco install ss-test-goreleaser-windows --version=0.1.0
+      - run: hello

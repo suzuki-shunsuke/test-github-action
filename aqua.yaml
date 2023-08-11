@@ -8,7 +8,6 @@ checksum:
   require_checksum: true
 registries:
   - type: standard
-    ref: v4.19.0 # renovate: depName=aquaproj/aqua-registry
+    ref: v2.25.0 # renovate: depName=aquaproj/aqua-registry
 packages:
-  # Split packages per package with `import` to avoid pull requests' conflict
-  - import: aqua/*.yaml
+  - name: suzuki-shunsuke/ci-info@v2.0.3
