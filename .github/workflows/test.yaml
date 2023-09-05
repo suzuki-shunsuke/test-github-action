@@ -5,6 +5,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/github-script@v6
+        id: my-script
+        with:
+          script: |
+            core.exportVariable('TFACTION_SKIP_ADDING_AQUA_PACKAGES', JSON.stringify(undefined && undefined));
+
       - uses: aquaproj/aqua-installer@v2.1.2
         with:
           aqua_version: v2.10.1
