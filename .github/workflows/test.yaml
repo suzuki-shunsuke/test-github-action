@@ -5,7 +5,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: ":"
-        if: "true"
-      - run: ":"
-        if: true || fromJSON('')
+      - uses: aquaproj/aqua-installer@v2.1.2
+        with:
+          aqua_version: v2.10.1
+
+      - run: echo 'TFACTION_SKIP_ADDING_AQUA_PACKAGES=""' >> "$GITHUB_ENV"
+
+      - run: aqua init
+        if: env.TFACTION_SKIP_ADDING_AQUA_PACKAGES != 'true'
+
+      - run: aqua g -i open-policy-agent/conftest hashicorp/terraform
+        if: env.TFACTION_SKIP_ADDING_AQUA_PACKAGES != 'true'
