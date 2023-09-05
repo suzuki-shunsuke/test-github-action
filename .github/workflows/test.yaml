@@ -6,4 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: ":"
+        if: false
+      - run: ":"
         if: false || fromJSON('')
