@@ -1,0 +1,35 @@
+name: Watch GitHub Stars
+author: Shunsuke Suzuki
+
+branding:
+  icon: 'check'
+  color: 'yellow'
+
+description: |
+  Watch GitHub Stars and post comments to GitHub Issues.
+  GitHub CLI (gh) is required.
+
+inputs:
+  number:
+    description: The GitHub Issue number.
+    required: true
+  body:
+    description: The body of the comment.
+    default: |
+      [${{github.event.sender.login}}](${{github.event.sender.html_url}}) starred :star:
+
+      <img width="32" alt="image" src="${{github.event.sender.avatar_url}}">
+  github_token:
+    description: |
+      GitHub Access Token to post comments.
+      The permission `issues: write` is necessary.
+    default: ${{github.token}}
+
+runs:
+  using: composite
+  steps:
+    - run: gh -R "$GITHUB_REPOSITORY" issue comment "$NUMBER" --body "$BODY"
+      env:
+        NUMBER: ${{inputs.number}}
+        BODY: ${{inputs.body}}
+        GITHUB_TOKEN: ${{inputs.github_token}}

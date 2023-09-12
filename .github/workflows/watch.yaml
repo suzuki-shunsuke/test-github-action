@@ -10,11 +10,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - run: gh -R "$GITHUB_REPOSITORY" issue comment 167 --body "$BODY"
-        env:
-          PAYLOAD: ${{toJSON(github)}}
-          BODY: |
-            [${{github.event.sender.login}}](${{github.event.sender.html_url}}) starred (${{github.event.repository.stargazers_count}}) :star:
-
-            <img width="32" alt="image" src="${{github.event.sender.avatar_url}}">
-          GITHUB_TOKEN: ${{github.token}}
+      - uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+      - uses: ./.github/actions/watch-star
+        with:
+          number: 167
