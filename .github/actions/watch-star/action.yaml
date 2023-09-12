@@ -24,13 +24,43 @@ inputs:
       GitHub Access Token to post comments.
       The permission `issues: write` is necessary.
     default: ${{github.token}}
+  repo:
+    description: |
+      GitHub Repository to post comments
+      The default is $GITHUB_REPOSITORY
+    required: false
 
 runs:
   using: composite
   steps:
-    - run: gh -R "$GITHUB_REPOSITORY" issue comment "$NUMBER" --body "$BODY"
+    - shell: bash
+      run: |
+        if [ -z "$NUMBER" ]; then
+          echo "::error::The input number is required"
+          exit 1
+        fi
+      env:
+        NUMBER: ${{inputs.number}}
+    - id: repo
+      shell: bash
+      run: |
+        if [ -n "$REPO" ]; then
+          echo "repo=$REPO" >> "$GITHUB_OUTPUT"
+        fi
+        echo "repo=$GITHUB_REPOSITORY" >> "$GITHUB_OUTPUT"
+      env:
+        REPO: ${{inputs.repo}}
+    - run: gh -R "$REPO" issue comment "$NUMBER" --body "$BODY"
       shell: bash
       env:
+        REPO: ${{steps.repo.outputs.repo}}
         NUMBER: ${{inputs.number}}
         BODY: ${{inputs.body}}
         GITHUB_TOKEN: ${{inputs.github_token}}
+    - run: |
+        echo "::notice::Posted a comment to $GITHUB_SERVER_URL/$REPO/issues/$NUMBER"
+        echo "Posted a comment to $GITHUB_SERVER_URL/$REPO/issues/$NUMBER" >> "$GITHUB_SUMMARY"
+      shell: bash
+      env:
+        REPO: ${{steps.repo.outputs.repo}}
+        NUMBER: ${{inputs.number}}
