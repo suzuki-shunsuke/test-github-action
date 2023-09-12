@@ -8,6 +8,7 @@ branding:
 description: |
   Watch GitHub Stars and post comments to GitHub Issues.
   GitHub CLI (gh) is required.
+  This action assumes that the workflow run is triggered by a watch:started event.
 
 inputs:
   number:
@@ -16,7 +17,7 @@ inputs:
   body:
     description: The body of the comment.
     default: |
-      [${{github.event.sender.login}}](${{github.event.sender.html_url}}) starred :star:
+      [${{github.event.sender.login}}](${{github.event.sender.html_url}}) starred (${{github.event.repository.stargazers_count}}) :star:
 
       <img width="32" alt="image" src="${{github.event.sender.avatar_url}}">
   github_token:
@@ -59,7 +60,6 @@ runs:
         GITHUB_TOKEN: ${{inputs.github_token}}
     - run: |
         echo "::notice::Posted a comment to $GITHUB_SERVER_URL/$REPO/issues/$NUMBER"
-        echo "Posted a comment to $GITHUB_SERVER_URL/$REPO/issues/$NUMBER" >> "$GITHUB_SUMMARY"
       shell: bash
       env:
         REPO: ${{steps.repo.outputs.repo}}
