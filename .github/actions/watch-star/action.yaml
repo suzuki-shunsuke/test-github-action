@@ -29,6 +29,7 @@ runs:
   using: composite
   steps:
     - run: gh -R "$GITHUB_REPOSITORY" issue comment "$NUMBER" --body "$BODY"
+      shell: bash
       env:
         NUMBER: ${{inputs.number}}
         BODY: ${{inputs.body}}
