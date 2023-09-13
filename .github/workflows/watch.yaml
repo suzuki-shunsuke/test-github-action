@@ -10,7 +10,6 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
-      - uses: ./.github/actions/watch-star
+      - uses: suzuki-shunsuke/watch-star-action@feat/first-pr
         with:
-          number: 167
+          number: 167 # Change the issue number
