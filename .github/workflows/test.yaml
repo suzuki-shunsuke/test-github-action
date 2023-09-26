@@ -5,7 +5,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/upload-artifact@v3
-        with:
-          path: README.md
+      - run: echo "$ACTIONS_RESULTS_URL"
+      - run: echo "$ACTIONS_RUNTIME_TOKEN"
+      # - uses: actions/checkout@v3
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     path: README.md
