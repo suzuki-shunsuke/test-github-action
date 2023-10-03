@@ -1,0 +1,10 @@
+name: count the number of asdf plugins
+on: workflow_dispatch
+jobs:
+  count-asdf-plugins:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install asdf & tools
+        uses: asdf-vm/actions/install@v2
+      - run: asdf plugin list all | wc -l
