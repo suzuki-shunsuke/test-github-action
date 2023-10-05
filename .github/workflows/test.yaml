@@ -1,9 +1,11 @@
 ---
-name: test
+name: test terraform-graph-beautifier on darwin
 on: pull_request
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
-      - run: echo foo
-        if: env.FOO
+      - run: curl -LqO https://github.com/pcasteran/terraform-graph-beautifier/releases/download/v0.3.3/terraform-graph-beautifier_0.3.3_darwin_amd64.tar.gz
+      - run: tar xvzf terraform-graph-beautifier_0.3.3_darwin_amd64.tar.gz
+      - run: ls
+      - run: ./terraform-graph-beautifier --help
