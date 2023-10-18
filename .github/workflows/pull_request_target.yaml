@@ -5,6 +5,4 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "$EVENT"
-        env:
-          EVENT: ${{toJSON(github)}}
+      - run: echo foo
