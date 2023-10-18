@@ -8,3 +8,4 @@ jobs:
       - run: echo "$EVENT"
         env:
           EVENT: ${{toJSON(github)}}
+      - run: env | grep -E "^GITHUB_"
