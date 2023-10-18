@@ -1,0 +1,8 @@
+---
+name: pull_request_target_2
+on: pull_request_target
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo foo
