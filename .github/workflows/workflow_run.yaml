@@ -1,0 +1,17 @@
+---
+name: workflow_run
+on:
+  workflow_run:
+    types:
+      - requested
+jobs:
+  cancel-pull_request:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.event == 'pull_request'
+    permissions:
+      actions: write # To cancel workflow runs
+    steps:
+      - run: gh -R "$GITHUB_REPOSITORY" run cancel "$RUN_ID"
+        env:
+          GH_TOKEN: ${{github.token}}
+          RUN_ID: ${{github.event.workflow_run.id}}
