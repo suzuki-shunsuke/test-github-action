@@ -22,3 +22,6 @@ jobs:
       - run: echo "$OUTPUT"
         env:
           OUTPUT: ${{toJSON(steps.pr.outputs)}}
+      - run: echo "$MERGE_COMMIT_SHA"
+        env:
+          MERGE_COMMIT_SHA: ${{fromJSON(steps.pr.outputs.result).merge_commit_sha}}
