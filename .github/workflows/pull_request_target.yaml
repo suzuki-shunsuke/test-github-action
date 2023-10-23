@@ -13,24 +13,12 @@ jobs:
       - uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410 # v6
         id: pr
         with:
-          result-encoding: string
           script: |
-            await github.rest.pulls.get({
+            const { data: pullRequest } = await github.rest.pulls.get({
               ...context.repo,
               pull_number: context.payload.pull_request.number,
             });
+            return pullRequest
       - run: echo "$OUTPUT"
         env:
           OUTPUT: ${{toJSON(steps.pr.outputs)}}
-
-      - uses: actions/github-script@v6
-        id: pr2
-        with:
-          script: |
-            await github.rest.pulls.get({
-              ...context.repo,
-              pull_number: context.payload.pull_request.number,
-            });
-      - run: echo "$OUTPUT"
-        env:
-          OUTPUT: ${{toJSON(steps.pr2.outputs)}}
