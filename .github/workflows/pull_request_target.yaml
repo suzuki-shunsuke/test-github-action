@@ -9,3 +9,15 @@ jobs:
         env:
           EVENT: ${{toJSON(github)}}
       - run: env | grep -E "^GITHUB_"
+
+      - uses: actions/github-script@v6
+        id: pr
+        with:
+          script: |
+            github.rest.pulls.get({
+              ...context.repo,
+              pull_number: context.payload.pull_request.number,
+            });
+      - run: echo "$OUTPUT"
+        env:
+          OUTPUT: ${{toJSON(steps.pr.outputs)}}
