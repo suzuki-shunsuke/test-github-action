@@ -5,5 +5,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo foo
-        if: env.FOO
+      - name: Generate token
+        id: generate_token
+        uses: suzuki-shunsuke/github-app-token@v2.2.0
+        with:
+          app_id: ${{secrets.APP_ID}}
+          private_key: ${{secrets.APP_PRIVATE_KEY}}
+          # issues:write - Create labels
+          # pull_requests:write - Post comments and set labels
+          # contents:write - Push commits
+          permissions: >-
+            {"pull_requests": "write", "issues": "write", "contents": "write"}
