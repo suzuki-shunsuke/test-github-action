@@ -16,5 +16,3 @@ jobs:
           # contents:write - Push commits
           permissions: >-
             {"pull_requests": "write", "issues": "write", "contents": "write"}
-          repository_ids: >-
-            [${{github.repository_id}}]
