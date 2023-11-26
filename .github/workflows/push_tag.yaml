@@ -1,8 +1,11 @@
----
-name: test
-on: pull_request
+name: release
+
+on:
+  push:
+    tags: [v*]
+
 jobs:
-  test:
+  foo:
     runs-on: ubuntu-latest
     steps:
       - run: echo "$EVENT"
