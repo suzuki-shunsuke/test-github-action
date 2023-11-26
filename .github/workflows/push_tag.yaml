@@ -1,0 +1,13 @@
+name: release
+
+on:
+  push:
+    tags: [v*]
+
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "$EVENT"
+        env:
+          EVENT: ${{toJSON(github)}}
