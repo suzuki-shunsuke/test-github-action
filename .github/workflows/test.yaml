@@ -17,4 +17,4 @@ jobs:
           permissions: >-
             {"pull_requests": "write", "issues": "write", "contents": "write"}
           repositories: >-
-            ["test-github-action"]
+            ["github/docs"]
