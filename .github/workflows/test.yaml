@@ -5,6 +5,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "$BODY"
+      - run: echo "$EVENT"
         env:
-          BODY: ${{github}}
+          EVENT: ${{toJSON(github)}}
