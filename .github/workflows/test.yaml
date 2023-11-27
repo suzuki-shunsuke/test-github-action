@@ -10,7 +10,7 @@ jobs:
         uses: tj-actions/changed-files@25ef3926d147cd02fc7e931c1ef50772bbb0d25d # v40.1.1
       - uses: aquaproj/aqua-installer@928a2ee4243a9ee8312d80dc8cbaca88fb602a91 # v2.2.0
         with:
-          aqua_version: v2.16.4
+          aqua_version: v2.21.0
       - uses: suzuki-shunsuke/github-action-format@4313014561562b030ca6b4bff803657848f715bc # v0.1.1 
         with: 
           github_token: ${{ github.token }} 
