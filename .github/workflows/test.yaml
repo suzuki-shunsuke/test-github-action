@@ -16,7 +16,7 @@ jobs:
       - run: tree ~/artifacts/x86_64-pc-windows-msvc
       - run: |
           mkdir x86_64-pc-windows-msvc
-          cp -r /home/runner/artifacts/x86_64-pc-windows-msvc x86_64-pc-windows-msvc/cog.exe
+          cp -r /home/runner/artifacts/x86_64-pc-windows-msvc/README.md x86_64-pc-windows-msvc/cog.exe
           chmod +x -R  x86_64-pc-windows-msvc/cog.exe
           tree x86_64-pc-windows-msvc
           tar -czf cocogitto-x86_64-pc-windows-msvc.tar.gz x86_64-pc-windows-msvc/*
