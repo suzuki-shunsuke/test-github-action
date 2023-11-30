@@ -20,3 +20,4 @@ jobs:
           chmod +x -R  x86_64-pc-windows-msvc/cog.exe
           tree x86_64-pc-windows-msvc
           tar -czf cocogitto-x86_64-pc-windows-msvc.tar.gz x86_64-pc-windows-msvc/*
+          tar ztvf cocogitto-x86_64-pc-windows-msvc.tar.gz
