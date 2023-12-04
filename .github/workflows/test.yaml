@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@25ef3926d147cd02fc7e931c1ef50772bbb0d25d # v40.1.1
+        uses: tj-actions/changed-files@1c938490c880156b746568a518594309cfb3f66b # v40.2.1
       - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
       - uses: aquaproj/aqua-installer@928a2ee4243a9ee8312d80dc8cbaca88fb602a91 # v2.2.0
         with:
