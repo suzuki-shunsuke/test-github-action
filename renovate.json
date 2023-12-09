@@ -1,14 +1,7 @@
 {
   "extends": [
-    "config:base",
-    "helpers:pinGitHubActionDigests"
-  ],
-  "packageRules": [
-    {
-      "matchManagers": [
-        "gomod"
-      ],
-      "postUpdateOptions": []
-    }
+    "config:recommended",
+    "helpers:pinGitHubActionDigests",
+    "github>suzuki-shunsuke/renovate-config:nolimit#2.2.0"
   ]
 }
