@@ -7,9 +7,18 @@ jobs:
     steps:
       - name: My first step
         uses: docker://alpine:3.18.3
-  container-test-job:
+      - name: My first step
+        uses: docker://alpine:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33 # 3.18.3
+  container1:
     runs-on: ubuntu-latest
     container:
       image: alpine:3.18.3
+    steps:
+      - run: echo hello
+  container2:
+    runs-on: ubuntu-latest
+    container:
+      image: alpine:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33 # 3.18.3
+  container1:
     steps:
       - run: echo hello
