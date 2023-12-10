@@ -5,8 +5,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "fo.!?%$=bar" >> "$GITHUB_OUTPUT"
+      - run: echo 'fo.!?%^@#$/ =bar' >> "$GITHUB_OUTPUT"
         id: output
       - run: echo "$VALUE"
         env:
-          VALUE: ${{steps.output.outputs['fo.!?%$']}}
+          VALUE: ${{steps.output.outputs['fo.!?%^@#$/ ']}}
