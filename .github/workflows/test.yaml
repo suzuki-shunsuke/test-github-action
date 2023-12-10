@@ -2,27 +2,11 @@
 name: test
 on: pull_request
 jobs:
-  my_first_job:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: docker://alpine:3.18.3
-      - uses: docker://alpine@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33 # 3.18.3
-      - uses: docker://alpine:3.18.3@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33
-  container1:
-    runs-on: ubuntu-latest
-    container:
-      image: alpine:3.18.3
-    steps:
-      - run: echo hello
-  container2:
-    runs-on: ubuntu-latest
-    container:
-      image: alpine@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33 # 3.18.3
-    steps:
-      - run: echo hello
-  container3:
-    runs-on: ubuntu-latest
-    container:
-      image: alpine:3.18.3@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33
-    steps:
-      - run: echo hello
+      - run: echo 'fo.!?%^@#$/ =bar' >> "$GITHUB_OUTPUT"
+        id: output
+      - run: echo "$VALUE"
+        env:
+          VALUE: ${{steps.output.outputs['fo.!?%^@#$/ ']}}
