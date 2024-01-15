@@ -2,27 +2,30 @@
 name: test
 on: pull_request
 jobs:
-  my_first_job:
+  test:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
-      - uses: docker://alpine:3.18.3
-      - uses: docker://alpine@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33 # 3.18.3
-      - uses: docker://alpine:3.18.3@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33
-  container1:
-    runs-on: ubuntu-latest
-    container:
-      image: alpine:3.18.3
-    steps:
-      - run: echo hello
-  container2:
-    runs-on: ubuntu-latest
-    container:
-      image: alpine@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33 # 3.18.3
-    steps:
-      - run: echo hello
-  container3:
-    runs-on: ubuntu-latest
-    container:
-      image: alpine:3.18.3@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33
-    steps:
-      - run: echo hello
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - uses: aquaproj/aqua-installer@928a2ee4243a9ee8312d80dc8cbaca88fb602a91 # v2.2.0
+        with:
+          aqua_version: v2.21.3
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+
+      - run: echo "module_root_dir=$(lintnet info -module-root-dir)" >> "$GITHUB_OUTPUT"
+        id: lintnet
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ${{steps.lintnet.outputs.module_root_dir}}
+          key: ${{ hashFiles('lintnet.jsonnet') }}
+
+      - run: lintnet lint
+        env:
+          GITHUB_TOKEN: ${{github.token}}
