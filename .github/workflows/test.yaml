@@ -11,5 +11,5 @@ jobs:
           aqua_version: v2.22.0
       - uses: suzuki-shunsuke/github-action-format@main
         with:
-          command: terraform fmt -recursive | sed "s|^|${{ inputs.working_directory }}/|"
+          command: terraform fmt -recursive
           commit_message: "style: terraform fmt -recursive"
