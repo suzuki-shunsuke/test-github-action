@@ -1,6 +1,6 @@
 ---
 name: test
-on: pull_request
+on: push
 jobs:
   my_first_job:
     runs-on: ubuntu-latest
