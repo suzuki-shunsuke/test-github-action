@@ -17,7 +17,7 @@ jobs:
   container2:
     runs-on: ubuntu-latest
     container:
-      image: alpine@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33 # 3.18.3
+      image: alpine@sha256:6457d53fb065d6f250e1504b9bc42d5b6c65941d57532c072d929dd0628977d0 # 3.18.3
     steps:
       - run: echo hello
   container3:
