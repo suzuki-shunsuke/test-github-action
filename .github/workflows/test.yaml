@@ -2,27 +2,19 @@
 name: test
 on: pull_request
 jobs:
-  my_first_job:
-    runs-on: ubuntu-latest
+  macos-14:
+    runs-on: macos-14
     steps:
-      - uses: docker://alpine:3.18.3
-      - uses: docker://alpine@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33 # 3.18.3
-      - uses: docker://alpine:3.18.3@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33
-  container1:
-    runs-on: ubuntu-latest
-    container:
-      image: alpine:3.18.3
+      - run: uname -a
+  macos-13:
+    runs-on: macos-13
     steps:
-      - run: echo hello
-  container2:
-    runs-on: ubuntu-latest
-    container:
-      image: alpine@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33 # 3.18.3
+      - run: uname -a
+  macos-12:
+    runs-on: macos-12
     steps:
-      - run: echo hello
-  container3:
-    runs-on: ubuntu-latest
-    container:
-      image: alpine:3.18.3@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33
+      - run: uname -a
+  macos-latest:
+    runs-on: macos-latest
     steps:
-      - run: echo hello
+      - run: uname -a
