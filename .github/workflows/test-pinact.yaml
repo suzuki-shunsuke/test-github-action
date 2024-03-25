@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3
       - uses: actions/checkout@v2
-      - uses: actions/cache@v3.3.1
+      - uses: actions/cache@e12d46a63a90f2fae62d114769bbf2a179198b5c # v3.3.3
   actionlint:
     uses: suzuki-shunsuke/actionlint-workflow/.github/workflows/actionlint.yaml@v0.5.0
     with:
