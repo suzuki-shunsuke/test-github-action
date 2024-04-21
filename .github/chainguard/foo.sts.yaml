@@ -4,3 +4,7 @@ subject: repo:suzuki-shunsuke/test-github-action-2:ref:refs/heads/test-octo-sts
 permissions:
   contents: read
   issues: write
+
+repositories:
+  - suzuki-shunsuke/test-github-action
+  - suzuki-shunsuke/test-github-action-2
