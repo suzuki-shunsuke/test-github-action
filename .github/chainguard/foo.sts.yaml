@@ -6,5 +6,5 @@ permissions:
   issues: write
 
 repositories:
-  - suzuki-shunsuke/test-github-action
-  - suzuki-shunsuke/test-github-action-2
+  - test-github-action
+  - test-github-action-2
