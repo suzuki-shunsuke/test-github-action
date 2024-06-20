@@ -4,14 +4,17 @@ on:
     paths:
       - aqua.yaml
       - aqua-checksums.json
+      - .github/workflows/update-checksum.yaml
 jobs:
   update-aqua-checksums:
-    uses: aquaproj/update-checksum-workflow/.github/workflows/update-checksum.yaml@f637ff2417a258303aeec16a7fa7a1a7a8bda020 # v0.1.6
+    uses: aquaproj/update-checksum-workflow/.github/workflows/update-checksum.yaml@feat/support-changing-runs-on
     permissions:
       contents: read
     with:
-      aqua_version: v2.8.0
+      aqua_version: v2.9.0
       prune: true
+      # runs-on: '"macos-latest"'
+      runs-on: '["windows-latest"]'
     secrets:
       gh_app_id: ${{secrets.APP_ID}}
       gh_app_private_key: ${{secrets.APP_PRIVATE_KEY}}
