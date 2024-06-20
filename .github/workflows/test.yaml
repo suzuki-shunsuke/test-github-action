@@ -1,6 +1,9 @@
 ---
 name: test
-on: pull_request
+on:
+  pull_request:
+    paths-ignore:
+      - .github/workflows/test.yaml
 jobs:
   my_first_job:
     runs-on: ubuntu-latest
