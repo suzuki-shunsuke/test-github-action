@@ -4,6 +4,6 @@ on: pull_request
 jobs:
   foo:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - run: exit 1
+        continue-on-error: true
