@@ -6,6 +6,7 @@ on:
   workflow_dispatch: {} # Enable us to run this workflow manually
 jobs:
   auto-ready-for-review:
+    timeout-minutes: 30
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write # To update pull requests
