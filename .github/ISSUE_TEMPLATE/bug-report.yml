@@ -20,8 +20,8 @@ body:
       multiple: false
       options:
         - ''
-        - Yes
-        - No
+        - Good
+        - Bad
         - Maybe So
     validations:
       required: true
