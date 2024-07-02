@@ -13,6 +13,19 @@ body:
         Only maintainers can create new Issues. If needed, a maintainer will create an Issue after your Discussion been triaged and confirmed.
         This way we keep Issues actionable, and free of duplicates or wrong bug reports.
 
+  - type: dropdown
+    id: non_default_selection
+    attributes:
+      label: What selection would you like?
+      multiple: false
+      options:
+        - ''
+        - Yes
+        - No
+        - Maybe So
+    validations:
+      required: true
+
   - type: textarea
     id: aqua-version
     attributes:
