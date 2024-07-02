@@ -15,6 +15,19 @@ body:
         - [Check if Jsonnet supports the feature natively](https://jsonnet.org/ref/stdlib.html)
         - Basically, we don't accept a function accessing filesystem (e.g. [os.WriteFile](https://pkg.go.dev/os#WriteFile)) and network (e.g. [net/http#Get](https://pkg.go.dev/net/http#Get)) and executing external functions (e.g. [os/exec/#Cmd.Run](https://pkg.go.dev/os/exec#Cmd.Run))
 
+  - type: dropdown
+    id: non_default_selection
+    attributes:
+      label: What selection would you like?
+      multiple: false
+      options:
+        - ''
+        - Yes
+        - No
+        - Maybe So
+    validations:
+      required: true
+
   - type: input
     id: function-name
     attributes:
