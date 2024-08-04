@@ -106,6 +106,36 @@
       "algorithm": "sha256"
     },
     {
+      "id": "github_release/github.com/suzuki-shunsuke/github-comment/v6.2.0-1/github-comment_6.2.0-1_darwin_amd64.tar.gz",
+      "checksum": "323CEB638D4BFB13D501CA75953C1045CB4DF522FEECECF7B8B3A877ACC15ED1",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/github-comment/v6.2.0-1/github-comment_6.2.0-1_darwin_arm64.tar.gz",
+      "checksum": "A6132913618996CC4DA7AEB0E10D8060E07136334508FC2D2A3609E3E8F78708",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/github-comment/v6.2.0-1/github-comment_6.2.0-1_linux_amd64.tar.gz",
+      "checksum": "A41FCDF0581987A8F1962359EB9EF1A04909374DFE4D57915FB7769722E8D40D",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/github-comment/v6.2.0-1/github-comment_6.2.0-1_linux_arm64.tar.gz",
+      "checksum": "AB861A5F99CF170230434AAAC162D04476FE1CFAE9DF91F2BF5F5E6718FED03E",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/github-comment/v6.2.0-1/github-comment_6.2.0-1_windows_amd64.tar.gz",
+      "checksum": "4DD25181EB2686C92C962F207B0692B1E4B7DC3BB6358484EF73D4F7B60CE594",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/github-comment/v6.2.0-1/github-comment_6.2.0-1_windows_arm64.tar.gz",
+      "checksum": "A2CDFF19822B839B54A1633FAC107B59C68BE5F4298C19ED69A1C33A606E9E7D",
+      "algorithm": "sha256"
+    },
+    {
       "id": "github_release/github.com/suzuki-shunsuke/nllint/v0.1.0/nllint_darwin_amd64.tar.gz",
       "checksum": "C576EC52A5777255C074B0C20CDCD83060E4E502BC1FEA05EE8B149B35A0867F",
       "algorithm": "sha256"
