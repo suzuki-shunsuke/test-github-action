@@ -2,31 +2,17 @@
 name: test
 on: pull_request
 jobs:
-  my_first_job:
+  test:
     timeout-minutes: 30
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
-      - uses: docker://alpine:3.18.3
-      - uses: docker://alpine@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33 # 3.18.3
-      - uses: docker://alpine:3.18.3@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33
-  container1:
-    timeout-minutes: 30
-    runs-on: ubuntu-latest
-    container:
-      image: alpine:3.18.3
-    steps:
-      - run: echo hello
-  container2:
-    timeout-minutes: 30
-    runs-on: ubuntu-latest
-    container:
-      image: alpine@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33 # 3.18.3
-    steps:
-      - run: echo hello
-  container3:
-    timeout-minutes: 30
-    runs-on: ubuntu-latest
-    container:
-      image: alpine:3.18.3@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33
-    steps:
-      - run: echo hello
+      - uses: aquaproj/aqua-installer@v3.0.1
+        with:
+          aqua_version: v2.30.0
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+      - run: github-comment post --template hello
+        env:
+          GITHUB_TOKEN: ${{github.token}}
