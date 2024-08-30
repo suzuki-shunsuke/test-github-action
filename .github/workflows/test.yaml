@@ -2,31 +2,13 @@
 name: test
 on: pull_request
 jobs:
-  my_first_job:
+  foo:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
-      - uses: docker://alpine:3.18.3
-      - uses: docker://alpine@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33 # 3.18.3
-      - uses: docker://alpine:3.18.3@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33
-  container1:
-    timeout-minutes: 30
-    runs-on: ubuntu-latest
-    container:
-      image: alpine:3.18.3
-    steps:
-      - run: echo hello
-  container2:
-    timeout-minutes: 30
-    runs-on: ubuntu-latest
-    container:
-      image: alpine@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33 # 3.18.3
-    steps:
-      - run: echo hello
-  container3:
-    timeout-minutes: 30
-    runs-on: ubuntu-latest
-    container:
-      image: alpine:3.18.3@sha256:c5c5fda71656f28e49ac9c5416b3643eaa6a108a8093151d6d1afc9463be8e33
-    steps:
-      - run: echo hello
+      - run: "true"
+      - uses: suzuki-shunsuke/notify-workflow-error-action@feat-add-action
+        if: always()
+        with:
+          issue_number: "225"
+          status: ${{ job.status }}
