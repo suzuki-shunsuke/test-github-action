@@ -6,6 +6,8 @@ jobs:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
+      - run: "false"
       - uses: suzuki-shunsuke/notify-workflow-error-action@feat-add-action
+        if: always()
         with:
           issue_number: "225"
