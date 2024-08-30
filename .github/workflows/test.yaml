@@ -11,3 +11,4 @@ jobs:
         if: always()
         with:
           issue_number: "225"
+          status: ${{ job.status }}
