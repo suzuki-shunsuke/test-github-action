@@ -106,6 +106,36 @@
       "algorithm": "sha256"
     },
     {
+      "id": "github_release/github.com/suzuki-shunsuke/github-comment/v6.2.0/github-comment_6.2.0_darwin_amd64.tar.gz",
+      "checksum": "D8BC9008361B06F6A8BE9B34D0F7829F33D7A3DF3DD74AB808198C6C1C5560F1",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/github-comment/v6.2.0/github-comment_6.2.0_darwin_arm64.tar.gz",
+      "checksum": "E494098485E742B58DE814168EF63D331EE31EFE17A8608B8CB3ED0C46E63A12",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/github-comment/v6.2.0/github-comment_6.2.0_linux_amd64.tar.gz",
+      "checksum": "51C478D0B613FE1477E9E8477F51B47B8BAD04D4AB31CDAA596D7E0DAF8193B0",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/github-comment/v6.2.0/github-comment_6.2.0_linux_arm64.tar.gz",
+      "checksum": "24ADDFF0AEDC44A5B8BC8FED02233D17C0DE5D38FA1B66B99B76CCC95CA2BE57",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/github-comment/v6.2.0/github-comment_6.2.0_windows_amd64.tar.gz",
+      "checksum": "0B976FB7153128B12E484EAD5A0E420F0D062A4BF82BA44BDEEA0E891C847255",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/github-comment/v6.2.0/github-comment_6.2.0_windows_arm64.tar.gz",
+      "checksum": "7DE8249B567FE41235F96756B0596F0D2DEACA975908D157150C0E55D67168CD",
+      "algorithm": "sha256"
+    },
+    {
       "id": "github_release/github.com/suzuki-shunsuke/nllint/v0.1.0/nllint_darwin_amd64.tar.gz",
       "checksum": "C576EC52A5777255C074B0C20CDCD83060E4E502BC1FEA05EE8B149B35A0867F",
       "algorithm": "sha256"
@@ -133,6 +163,31 @@
     {
       "id": "github_release/github.com/suzuki-shunsuke/nllint/v0.1.0/nllint_windows_arm64.zip",
       "checksum": "4AEB83825367044C345128D34E38470AB53BED2D76491FB6F8A6737EC619DB90",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/terraform-linters/tflint/v0.53.0/tflint_darwin_amd64.zip",
+      "checksum": "7F2041DA26ED25641BC4C844EA999A04B8CB08C67ECFD78E7281640168B6BFF6",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/terraform-linters/tflint/v0.53.0/tflint_darwin_arm64.zip",
+      "checksum": "2BA8EEFE6CBD5D34E5A0589A8897646E4DA44C48F4C2FD9A77581D1E2B03BFF8",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/terraform-linters/tflint/v0.53.0/tflint_linux_amd64.zip",
+      "checksum": "BB0A3A6043EA1BCD221FC95D49BAC831BB511EB31946CA6A4050983E9E584578",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/terraform-linters/tflint/v0.53.0/tflint_linux_arm64.zip",
+      "checksum": "888DE559C3716D1007496F22C949DAF246C8E1F7315C320FEA7EDDB09DE60FF2",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/terraform-linters/tflint/v0.53.0/tflint_windows_amd64.zip",
+      "checksum": "76C0FB7FCEC89CFB3661FE5840736D74BACBFD89BF1829BD788CF47A1C9EE1AD",
       "algorithm": "sha256"
     },
     {

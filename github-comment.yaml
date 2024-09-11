@@ -1,0 +1,6 @@
+post:
+  default:
+    embedded_var_names:
+      - wd
+hide:
+  tflint: Comment.HasMeta && (Comment.Meta.SHA1 != Commit.SHA1 && Comment.Meta.JobName == "tflint") && Comment.Meta.Vars.wd == Vars.wd
