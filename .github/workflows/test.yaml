@@ -9,13 +9,13 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: aquaproj/aqua-installer@v3.0.1
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - uses: aquaproj/aqua-installer@6ce1f8848ec8e61f14d57bd5d7597057a6dd187c # v3.0.1
         with:
           aqua_version: v2.31.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: suzuki-shunsuke/github-action-tflint@v1.1.0
+      - uses: suzuki-shunsuke/github-action-tflint@0b7fbc35b0d512749f35c3036df57c3a95d3e9e1 # v1.1.0
         with:
           working_directory: terraform
           github_comment: true
