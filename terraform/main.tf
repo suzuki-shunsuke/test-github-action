@@ -1,4 +1,4 @@
-resource "null_resource" "foo" {}
+resource "null_resource" "foo-bar" {}
 
 terraform {
   required_version = ">= 1.0"
