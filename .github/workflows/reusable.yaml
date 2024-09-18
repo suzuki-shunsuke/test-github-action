@@ -20,5 +20,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - run: echo "$NUMBER"
+        env:
+          NUMBER: ${{ inputs.pr_number }}
       - run: echo "$INPUT_PR_NUMBER"
       - run: env | grep INPUT
