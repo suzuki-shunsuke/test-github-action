@@ -27,3 +27,4 @@ jobs:
       - run: |
           set +e
           env | grep INPUT
+          true
