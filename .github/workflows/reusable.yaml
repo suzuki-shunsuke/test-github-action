@@ -6,6 +6,13 @@ on:
         required: false
         type: number
         default: 30
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        required: false
+        description: pr number
+        type: number
+        default: 30
 
 permissions: {}
 
