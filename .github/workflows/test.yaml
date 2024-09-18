@@ -12,7 +12,7 @@ jobs:
           app_id: ${{secrets.APP_ID}}
           private_key: ${{secrets.APP_PRIVATE_KEY}}
           repositories: "null"
-          permissions: "null"
+          # permissions: "null"
           # permissions: >-
           #   {
           #     "contents": "read"
