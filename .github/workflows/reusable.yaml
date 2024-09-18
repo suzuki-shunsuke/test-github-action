@@ -24,7 +24,4 @@ jobs:
         env:
           NUMBER: ${{ inputs.pr_number }}
       - run: echo "$INPUT_PR_NUMBER"
-      - run: |
-          set +e
-          env | grep INPUT
-          true
+      - run: env | { grep INPUT || :; }
