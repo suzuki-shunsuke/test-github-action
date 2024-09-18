@@ -11,5 +11,8 @@ jobs:
         with:
           app_id: ${{secrets.APP_ID}}
           private_key: ${{secrets.APP_PRIVATE_KEY}}
-          permissions: "null"
+          permissions: >-
+            {
+              "contents": "read"
+            }
           repositories: "null"
