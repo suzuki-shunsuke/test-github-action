@@ -1,0 +1,16 @@
+name: test-input-env
+on:
+  workflow_call:
+    inputs:
+      pr_number:
+        required: false
+        type: number
+        default: 30
+
+permissions: {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "$INPUT_PR_NUMBER"
