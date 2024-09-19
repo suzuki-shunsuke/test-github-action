@@ -1,0 +1,12 @@
+---
+name: test sparse checkout
+on: pull_request
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github
+      - run: tree .github
