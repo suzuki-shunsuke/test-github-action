@@ -3,6 +3,6 @@ name: test
 on: pull_request
 jobs:
   foo:
-    uses: ./.github/workflows/reusable.yaml
+    uses: ./.github/workflows/test-input.yaml
     with:
-      pr_number: 30
+      foo: Yoo
