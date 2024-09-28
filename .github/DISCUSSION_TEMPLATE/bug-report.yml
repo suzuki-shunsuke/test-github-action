@@ -10,6 +10,5 @@ body:
         [Please create an issue using the issue template](https://github.com/aquaproj/aqua/issues/new?assignees=&labels=bug&projects=&template=bug-report.yml).
   - type: checkboxes
     attributes:
-      label: DON't USE THIS TEMPLATE
       options:
         - label: DON't USE THIS TEMPLATE
