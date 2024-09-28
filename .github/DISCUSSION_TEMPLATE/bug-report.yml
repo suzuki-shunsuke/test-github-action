@@ -5,7 +5,7 @@ body:
       value: |
         ## :warning: Please use the issue template instead
 
-        This discussion template keeps only for old discussions.
+        We keep this discussion template only for old discussions.
 
         [Please create an issue using the issue template](https://github.com/aquaproj/aqua/issues/new?assignees=&labels=bug&projects=&template=bug-report.yml).
   - type: checkboxes
