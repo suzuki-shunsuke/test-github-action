@@ -8,3 +8,10 @@ body:
         This discussion template keeps only for old discussions.
 
         [Please create an issue using the issue template](https://github.com/aquaproj/aqua/issues/new?assignees=&labels=bug&projects=&template=bug-report.yml).
+  - type: textarea
+    id: free-text
+    attributes:
+      label: Free text
+      value: PLEASE DON'T USE THIS TEMPLATE
+    validations:
+      required: true
