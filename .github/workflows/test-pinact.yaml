@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/cache@v3.3.1
   actionlint:
-    uses: suzuki-shunsuke/actionlint-workflow/.github/workflows/actionlint.yaml@v0.5.0
+    uses: suzuki-shunsuke/actionlint-workflow/.github/workflows/actionlint.yaml@f39bb91c0f9391bea9750f89252fb364f9d64c13 # v1.2.0
     with:
       aqua_version: v2.3.4
     permissions:
