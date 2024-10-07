@@ -13,3 +13,11 @@ jobs:
           echo "::notice:: stderr" >&2
       - run: |
           echo "::notice:: stdout"
+      - run: |
+          echo "::warning:: stderr" >&2
+      - run: |
+          echo "::warning:: stdout"
+      - run: |
+          echo "::error:: stderr" >&2
+      - run: |
+          echo "::error:: stdout"
