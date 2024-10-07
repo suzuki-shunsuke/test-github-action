@@ -10,4 +10,6 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - run: |
-          echo "::notice:: Hello" >&2
+          echo "::notice:: stderr" >&2
+      - run: |
+          echo "::notice:: stdout"
