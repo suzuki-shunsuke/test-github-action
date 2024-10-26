@@ -1,0 +1,16 @@
+---
+name: watch
+on:
+  watch:
+    types:
+      - started
+jobs:
+  test:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: suzuki-shunsuke/watch-star-action@feat/first-pr
+        with:
+          number: 167 # Change the issue number

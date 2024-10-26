@@ -1,0 +1,14 @@
+---
+name: Auto Ready for Review
+on:
+  schedule:
+    - cron: '*/5 * * * *' # Execute every 5 minutes
+  workflow_dispatch: {} # Enable us to run this workflow manually
+jobs:
+  auto-ready-for-review:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write # To update pull requests
+    steps:
+      - uses: suzuki-shunsuke/auto-ready-for-review-action@main

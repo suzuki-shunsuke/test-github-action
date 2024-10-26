@@ -1,0 +1,27 @@
+name: test-input-env
+on:
+  workflow_call:
+    inputs:
+      pr_number:
+        required: false
+        type: number
+        default: 30
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        required: false
+        description: pr number
+        type: number
+        default: 30
+
+permissions: {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "$NUMBER"
+        env:
+          NUMBER: ${{ inputs.pr_number }}
+      - run: echo "$INPUT_PR_NUMBER"
+      - run: env | { grep INPUT || :; }
