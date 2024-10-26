@@ -13,5 +13,5 @@ jobs:
     steps:
       - uses: suzuki-shunsuke/lock-action/lock@pr/1
         with:
-          branch: lock/foo
+          branch: lock/foo-2
           message: test
