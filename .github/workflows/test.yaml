@@ -15,3 +15,6 @@ jobs:
         with:
           branch: foo-3
           message: test
+      - run: echo "$OUTPUTS"
+        env:
+          OUTPUTS: ${{ toJSON(steps.lock.outputs) }}
