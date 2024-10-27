@@ -16,14 +16,15 @@ jobs:
         with:
           branch: foo-3
           message: test
+          post_unlock: "true"
       - run: echo "$OUTPUTS"
         env:
           OUTPUTS: ${{ toJSON(steps.lock.outputs) }}
-      - uses: suzuki-shunsuke/lock-action/unlock@pr/1
-        id: unlock
-        with:
-          branch: foo-3
-          message: test
-      - run: echo "$OUTPUTS"
-        env:
-          OUTPUTS: ${{ toJSON(steps.unlock.outputs) }}
+      # - uses: suzuki-shunsuke/lock-action/unlock@pr/1
+      #   id: unlock
+      #   with:
+      #     branch: foo-3
+      #     message: test
+      # - run: echo "$OUTPUTS"
+      #   env:
+      #     OUTPUTS: ${{ toJSON(steps.unlock.outputs) }}
