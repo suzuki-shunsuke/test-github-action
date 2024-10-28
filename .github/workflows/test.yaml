@@ -14,8 +14,18 @@ jobs:
       - uses: suzuki-shunsuke/lock-action@pr/1
         id: lock
         with:
+          mode: lock
+          key: foo-3
+          message: test
+          post_unlock: "true"
+      - run: echo "$OUTPUTS"
+        env:
+          OUTPUTS: ${{ toJSON(steps.lock.outputs) }}
+      - uses: suzuki-shunsuke/lock-action@pr/1
+        id: check
+        with:
           mode: check
           key: foo-3
       - run: echo "$OUTPUTS"
         env:
-          OUTPUTS: ${{ toJSON(steps.lock.outputs) }}
+          OUTPUTS: ${{ toJSON(steps.check.outputs) }}
