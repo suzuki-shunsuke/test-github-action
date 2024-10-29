@@ -1,0 +1,99 @@
+---
+name: Example
+run-name: Example - ${{inputs.action}} ${{inputs.key}}
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: action
+        required: true
+        default: lock
+        type: choice
+        options:
+          - lock
+          - unlock
+          - check
+          - terraform_apply
+          - terraform_plan
+      key:
+        description: key
+        required: false
+        default: example
+      key_prefix:
+        description: key prefix
+        required: false
+        default: lock__
+      message:
+        description: message
+        required: false
+permissions:
+  contents: write
+jobs:
+  lock:
+    name: ${{inputs.action}}
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: |
+      contains(fromJSON('["lock", "unlock", "check"]'), inputs.action)
+    steps:
+      - name: ${{inputs.action}} ${{inputs.key}}
+        uses: suzuki-shunsuke/lock-action@95020dd05b8976fd85ad4d777411a41d2d2928fa # v0.1.1
+        id: lock
+        with:
+          mode: ${{inputs.action}}
+          key: ${{inputs.key}}
+          key_prefix: ${{inputs.key_prefix}}
+          message: ${{inputs.message}}
+          ignore_already_locked_error: "true"
+      - name: Output the result of check
+        run: |
+          echo "::notice::already_locked: $ALREADY_LOCKED" >&2
+        if: inputs.action == 'check'
+        env:
+          ALREADY_LOCKED: ${{steps.lock.outputs.already_locked}}
+          RESULT: ${{steps.lock.outputs.result}}
+
+  terraform_apply:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    if: inputs.action == 'terraform_apply'
+    permissions:
+      contents: write
+    steps:
+      - name: Acquire the lock before running terraform apply
+        uses: suzuki-shunsuke/lock-action@95020dd05b8976fd85ad4d777411a41d2d2928fa # v0.1.1
+        with:
+          mode: lock
+          key: ${{inputs.key}}
+          key_prefix: ${{inputs.key_prefix}}
+          post_unlock: "true"
+      - name: terraform apply
+        run: |
+          echo "::notice::Running terraform apply..." >&2
+          sleep 120
+
+  terraform_plan:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    if: inputs.action == 'terraform_plan'
+    permissions:
+      contents: read
+    steps:
+      - name: Check if the key is being locked
+        uses: suzuki-shunsuke/lock-action@95020dd05b8976fd85ad4d777411a41d2d2928fa # v0.1.1
+        id: check
+        with:
+          mode: check
+          key: ${{inputs.key}}
+          key_prefix: ${{inputs.key_prefix}}
+      - name: The job fails if the key is being locked
+        run: |
+          echo "::error:: The key $KEY is being locked"
+          exit 1
+        if: steps.check.outputs.already_locked == 'true'
+        env:
+          KEY: ${{inputs.key}}
+      - name: terraform plan
+        run: echo "::notice::Run terraform plan..." >&2
