@@ -18,3 +18,6 @@ jobs:
       - run: ci-info -v
         env:
           AQUA_CONFIG: ${{ steps.test.outputs.config }}
+      - run: ghcp -v
+        env:
+          AQUA_CONFIG: ${{ steps.test.outputs.config }}
