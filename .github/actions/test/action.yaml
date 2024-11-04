@@ -1,0 +1,8 @@
+name: test
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo "$ACTION_PATH"
+      env:
+        ACTION_PATH: ${{env.GITHUB_ACTION_PATH}}
