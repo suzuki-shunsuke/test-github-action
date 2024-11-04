@@ -9,8 +9,6 @@ runs:
     - shell: bash
       id: config
       run: echo "config=$GITHUB_ACTION_PATH/aqua.yaml" >> "$GITHUB_OUTPUT"
-    - uses: aquaproj/aqua-installer@v3.0.1
-      with:
-        aqua_version: v2.37.1
+    - run: aqua i -l
       env:
         AQUA_CONFIG: ${{ steps.config.outputs.config }}
