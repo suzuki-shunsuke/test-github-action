@@ -3,6 +3,6 @@ runs:
   using: composite
   steps:
     - shell: bash
-      run: echo "$ACTION_PATH"
-      env:
-        ACTION_PATH: ${{env.GITHUB_ACTION_PATH}}
+      run: echo "ACTION_PATH=$GITHUB_ACTION_PATH" >> "$GITHUB_ENV"
+    - shell: bash
+      run: echo "${{env.ACTION_PATH}}"
