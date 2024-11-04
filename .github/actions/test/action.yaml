@@ -10,6 +10,6 @@ runs:
       id: config
       run: echo "config=$GITHUB_ACTION_PATH/aqua.yaml" >> "$GITHUB_OUTPUT"
     - run: aqua i -l
-      shell: baah
+      shell: bash
       env:
         AQUA_CONFIG: ${{ steps.config.outputs.config }}
