@@ -1,8 +1,8 @@
 name: test
 outputs:
   config:
-    description: list of changed modules
-    value: ${{ steps.list-targets.outputs.modules }}
+    description: aqua config
+    value: ${{ steps.config.outputs.config }}
 runs:
   using: composite
   steps:
