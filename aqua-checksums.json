@@ -1,11 +1,6 @@
 {
   "checksums": [
     {
-      "id": "github_release/github.com/reviewdog/reviewdog/v0.15.0/reviewdog_0.15.0_Darwin_arm64.tar.gz",
-      "checksum": "DB5FE19D29346C23D7468B6A1ACEBBF9C369C805AE8CB97159881BFAADFECB5A",
-      "algorithm": "sha256"
-    },
-    {
       "id": "github_release/github.com/reviewdog/reviewdog/v0.15.0/reviewdog_0.15.0_Darwin_x86_64.tar.gz",
       "checksum": "361F3513252D5F64C822CFAC273A7F9AC9C4DCC1D38FAD7974100070A09CFC7B",
       "algorithm": "sha256"
