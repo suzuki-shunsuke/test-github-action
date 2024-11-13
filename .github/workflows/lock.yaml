@@ -69,6 +69,8 @@ jobs:
           key: ${{inputs.key}}
           key_prefix: ${{inputs.key_prefix}}
           post_unlock: "true"
+          max_wait_seconds: "60"
+          wait_interval_seconds: "10"
       - name: terraform apply
         run: |
           echo "::notice::Running terraform apply..." >&2
