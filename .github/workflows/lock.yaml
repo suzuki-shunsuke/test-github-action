@@ -36,7 +36,7 @@ jobs:
     permissions:
       contents: write
     if: |
-      contains(fromJSON('["lock", "unlock", "check"]'), inputs.action)
+      contains(fromJSON('["lock", "unlock"]'), inputs.action)
     steps:
       - name: ${{inputs.action}} ${{inputs.key}}
         uses: suzuki-shunsuke/lock-action@pr/70
@@ -47,10 +47,28 @@ jobs:
           key_prefix: ${{inputs.key_prefix}}
           message: ${{inputs.message}}
           ignore_already_locked_error: "true"
+
+  check:
+    name: ${{inputs.action}}
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: |
+      inputs.action == 'check'
+    steps:
+      - name: ${{inputs.action}} ${{inputs.key}}
+        uses: suzuki-shunsuke/lock-action@pr/70
+        id: lock
+        with:
+          mode: check
+          key: ${{inputs.key}}
+          key_prefix: ${{inputs.key_prefix}}
+          max_wait_seconds: "60"
+          wait_interval_seconds: "10"
       - name: Output the result of check
         run: |
           echo "::notice::already_locked: $ALREADY_LOCKED" >&2
-        if: inputs.action == 'check'
         env:
           ALREADY_LOCKED: ${{steps.lock.outputs.already_locked}}
           RESULT: ${{steps.lock.outputs.result}}
