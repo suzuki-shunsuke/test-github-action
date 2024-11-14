@@ -39,7 +39,7 @@ jobs:
       contains(fromJSON('["lock", "unlock"]'), inputs.action)
     steps:
       - name: ${{inputs.action}} ${{inputs.key}}
-        uses: suzuki-shunsuke/lock-action@pr/70
+        uses: suzuki-shunsuke/lock-action@pr/73
         id: lock
         with:
           mode: ${{inputs.action}}
@@ -58,7 +58,7 @@ jobs:
       inputs.action == 'check'
     steps:
       - name: ${{inputs.action}} ${{inputs.key}}
-        uses: suzuki-shunsuke/lock-action@pr/70
+        uses: suzuki-shunsuke/lock-action@pr/73
         id: lock
         with:
           mode: check
@@ -81,7 +81,7 @@ jobs:
       contents: write
     steps:
       - name: Acquire the lock before running terraform apply
-        uses: suzuki-shunsuke/lock-action@pr/70
+        uses: suzuki-shunsuke/lock-action@pr/73
         with:
           mode: lock
           key: ${{inputs.key}}
@@ -102,7 +102,7 @@ jobs:
       contents: read
     steps:
       - name: Check if the key is being locked
-        uses: suzuki-shunsuke/lock-action@pr/70
+        uses: suzuki-shunsuke/lock-action@pr/73
         id: check
         with:
           mode: check
