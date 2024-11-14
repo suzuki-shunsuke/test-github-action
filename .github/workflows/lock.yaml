@@ -36,10 +36,10 @@ jobs:
     permissions:
       contents: write
     if: |
-      contains(fromJSON('["lock", "unlock", "check"]'), inputs.action)
+      contains(fromJSON('["lock", "unlock"]'), inputs.action)
     steps:
       - name: ${{inputs.action}} ${{inputs.key}}
-        uses: suzuki-shunsuke/lock-action@95020dd05b8976fd85ad4d777411a41d2d2928fa # v0.1.1
+        uses: suzuki-shunsuke/lock-action@pr/73
         id: lock
         with:
           mode: ${{inputs.action}}
@@ -47,10 +47,29 @@ jobs:
           key_prefix: ${{inputs.key_prefix}}
           message: ${{inputs.message}}
           ignore_already_locked_error: "true"
+
+  check:
+    name: ${{inputs.action}}
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: |
+      inputs.action == 'check'
+    steps:
+      - name: ${{inputs.action}} ${{inputs.key}}
+        uses: suzuki-shunsuke/lock-action@pr/73
+        id: lock
+        with:
+          mode: check
+          key: ${{inputs.key}}
+          key_prefix: ${{inputs.key_prefix}}
+          max_wait_seconds: "20"
+          wait_interval_seconds: "5"
+          fail_if_locked: "true"
       - name: Output the result of check
         run: |
           echo "::notice::already_locked: $ALREADY_LOCKED" >&2
-        if: inputs.action == 'check'
         env:
           ALREADY_LOCKED: ${{steps.lock.outputs.already_locked}}
           RESULT: ${{steps.lock.outputs.result}}
@@ -63,12 +82,14 @@ jobs:
       contents: write
     steps:
       - name: Acquire the lock before running terraform apply
-        uses: suzuki-shunsuke/lock-action@95020dd05b8976fd85ad4d777411a41d2d2928fa # v0.1.1
+        uses: suzuki-shunsuke/lock-action@pr/73
         with:
           mode: lock
           key: ${{inputs.key}}
           key_prefix: ${{inputs.key_prefix}}
           post_unlock: "true"
+          max_wait_seconds: "60"
+          wait_interval_seconds: "10"
       - name: terraform apply
         run: |
           echo "::notice::Running terraform apply..." >&2
@@ -82,7 +103,7 @@ jobs:
       contents: read
     steps:
       - name: Check if the key is being locked
-        uses: suzuki-shunsuke/lock-action@95020dd05b8976fd85ad4d777411a41d2d2928fa # v0.1.1
+        uses: suzuki-shunsuke/lock-action@pr/73
         id: check
         with:
           mode: check
