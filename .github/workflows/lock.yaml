@@ -64,8 +64,9 @@ jobs:
           mode: check
           key: ${{inputs.key}}
           key_prefix: ${{inputs.key_prefix}}
-          max_wait_seconds: "60"
-          wait_interval_seconds: "10"
+          max_wait_seconds: "20"
+          wait_interval_seconds: "5"
+          fail_if_locked: "true"
       - name: Output the result of check
         run: |
           echo "::notice::already_locked: $ALREADY_LOCKED" >&2
