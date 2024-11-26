@@ -15,6 +15,15 @@ jobs:
       - run: npm i -g renovate
       - run: renovate --version
       - run: renovate-config-validator --strict
+  json-env:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - run: node -v
+      - run: npm -v
+      - run: npm i -g renovate
+      - run: renovate --version
+      - run: RENOVATE_CONFIG_FILE=renovate.json renovate-config-validator --strict
   js:
     runs-on: ubuntu-24.04
     steps:
