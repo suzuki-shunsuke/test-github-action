@@ -6,31 +6,32 @@ on:
     branches:
       - main
 jobs:
-  json:
+  renovate-json:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-      - run: node -v
-      - run: npm -v
-      - run: npm i -g renovate
-      - run: renovate --version
-      - run: renovate-config-validator --strict
-  json-env:
+      - uses: suzuki-shunsuke/github-action-renovate-config-validator@main
+  foo-json:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-      - run: node -v
-      - run: npm -v
-      - run: npm i -g renovate
-      - run: renovate --version
-      - run: RENOVATE_CONFIG_FILE=renovate.json renovate-config-validator --strict
+      - uses: suzuki-shunsuke/github-action-renovate-config-validator@main
+        with:
+          config_file_path: foo.json
   js:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-      - run: node -v
-      - run: npm -v
-      - run: npm i -g renovate
-      - run: renovate --version
-      - run: rm renovate.json
-      - run: RENOVATE_CONFIG_FILE=config.js renovate-config-validator --strict
+      - uses: suzuki-shunsuke/github-action-renovate-config-validator@main
+        with:
+          config_file_path: config.js
+  all:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - uses: suzuki-shunsuke/github-action-renovate-config-validator@main
+        with:
+          config_file_path: |
+            renovate.json
+            foo.json
+            config.js
