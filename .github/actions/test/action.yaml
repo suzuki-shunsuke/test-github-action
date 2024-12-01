@@ -1,0 +1,15 @@
+name: test
+outputs:
+  config:
+    description: aqua config
+    value: ${{ steps.config.outputs.config }}
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      id: config
+      run: echo "config=$GITHUB_ACTION_PATH/aqua.yaml" >> "$GITHUB_OUTPUT"
+    - run: aqua i -l
+      shell: bash
+      env:
+        AQUA_CONFIG: ${{ steps.config.outputs.config }}
