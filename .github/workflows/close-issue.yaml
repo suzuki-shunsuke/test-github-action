@@ -1,0 +1,25 @@
+---
+name: Close a new Issue without an issue template
+on:
+  issues:
+    types: [opened]
+jobs:
+  close-new-issue:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      issues: write
+    if: |
+      !contains(github.event.pull_request.labels.*.name, 'bug') &&
+      !contains(github.event.pull_request.labels.*.name, 'enhancement') &&
+      !contains(github.event.pull_request.labels.*.name, 'no-fit-template') &&
+      !contains(github.event.pull_request.labels.*.name, 'question') &&
+      !contains(github.event.pull_request.labels.*.name, 'support-request')
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: suzuki-shunsuke/issue-close-lock-action@v0.1.0
+        with:
+          issue_number: ${{github.event.issue.number}}
+          message: |
+            This issue is closed because this issue isn't create with an issue template probably.
+            Please create an issue with an issue template.
