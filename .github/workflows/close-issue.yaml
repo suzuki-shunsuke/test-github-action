@@ -9,12 +9,7 @@ jobs:
     timeout-minutes: 10
     permissions:
       issues: write
-    if: |
-      !contains(github.event.issue.labels.*.name, 'bug') &&
-      !contains(github.event.issue.labels.*.name, 'enhancement') &&
-      !contains(github.event.issue.labels.*.name, 'no-fit-template') &&
-      !contains(github.event.issue.labels.*.name, 'question') &&
-      !contains(github.event.issue.labels.*.name, 'support-request')
+    if: "false"
     steps:
       - uses: suzuki-shunsuke/issue-close-lock-action@v0.1.0
         with:
