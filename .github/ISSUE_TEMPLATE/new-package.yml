@@ -50,6 +50,10 @@ body:
       value: |
         [aqua supports several install ways](https://aquaproj.github.io/docs/reference/registry-config/#package-types).
 
+        > e.g. https://suzuki-shunsuke.github.io/tfcmt/install
+
+        The tool's official installation guide: 
+
         - [ ] Download pre-built binaries
           - [ ] GitHub Releases
           - [ ] Files in the GitHub repository
