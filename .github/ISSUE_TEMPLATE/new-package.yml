@@ -1,0 +1,70 @@
+name: Add a New Package
+description: Request to add a new package to the registry
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # :warning: Note
+        - [aqua doesn't support building packages from source except for `go install`, `go build`, and `cargo install`.](https://aquaproj.github.io/docs/reference/restriction/#aqua-doesnt-support-running-any-external-commands-to-install-tools)
+        - aqua doesn't install dependencies.
+        - aqua doesn't support running scripts while installing tools.
+        - aqua doesn't support setting environment variables and shell completions while installing tools.
+  - type: textarea
+    id: source-url
+    attributes:
+      label: Source URL
+      description: GitHub Repository, GitLab Repository, etc
+    validations:
+      required: true
+  - type: textarea
+    id: homepage-url
+    attributes:
+      label: Homepage URL
+      description: The website of the tool
+    validations:
+      required: false
+  - type: textarea
+    id: command-names
+    attributes:
+      label: Command Names
+    validations:
+      required: true
+  - type: textarea
+    id: how-to-confirm
+    attributes:
+      label: How To Confirm after Installation
+      value: |
+        > e.g.
+        > ```sh
+        > gh version
+        > ```
+    validations:
+      required: true
+  - type: textarea
+    id: how-to-install
+    attributes:
+      label: How To Install
+      value: |
+        [aqua supports several install ways](https://aquaproj.github.io/docs/reference/registry-config/#package-types).
+
+        > ![CAUTION]
+        > [aqua doesn't support building packages from source except for `go install`, `go build`, and `cargo install`.](https://aquaproj.github.io/docs/reference/restriction/#aqua-doesnt-support-running-any-external-commands-to-install-tools)
+
+        - [ ] Download pre-built binaries
+          - [ ] GitHub Releases
+          - [ ] Files in the repository
+          - [ ] URL: 
+        - [ ] Build from source
+          - [ ] go install
+          - [ ] go build
+          - [ ] cargo install
+    validations:
+      required: true
+  - type: textarea
+    id: note
+    attributes:
+      label: Note
+    validations:
+      required: false
