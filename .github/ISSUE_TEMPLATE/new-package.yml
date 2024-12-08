@@ -49,17 +49,14 @@ body:
       value: |
         [aqua supports several install ways](https://aquaproj.github.io/docs/reference/registry-config/#package-types).
 
-        > ![CAUTION]
-        > [aqua doesn't support building packages from source except for `go install`, `go build`, and `cargo install`.](https://aquaproj.github.io/docs/reference/restriction/#aqua-doesnt-support-running-any-external-commands-to-install-tools)
-
         - [ ] Download pre-built binaries
           - [ ] GitHub Releases
           - [ ] Files in the repository
           - [ ] URL: 
         - [ ] Build from source
-          - [ ] go install
-          - [ ] go build
-          - [ ] cargo install
+          - [ ] go install: `go install `
+          - [ ] go build: `go build `
+          - [ ] cargo install `cargo install `
     validations:
       required: true
   - type: textarea
