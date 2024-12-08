@@ -15,7 +15,7 @@ body:
     id: source-url
     attributes:
       label: Source URL
-      description: GitHub Repository, GitLab Repository, etc
+      description: GitHub Repository, GitLab Repository, etc. If this tool is not open source, please fill in `Not Open Source`.
     validations:
       required: true
   - type: textarea
@@ -28,30 +28,31 @@ body:
   - type: textarea
     id: command-names
     attributes:
-      label: Command Names
+      label: Command names
     validations:
       required: true
   - type: textarea
     id: how-to-confirm
     attributes:
-      label: How To Confirm after Installation
+      label: How to confirm after installation
       value: |
-        > e.g.
-        > ```sh
-        > gh version
-        > ```
+        > e.g. `gh version`
+
+        ```sh
+
+        ```
     validations:
       required: true
   - type: textarea
     id: how-to-install
     attributes:
-      label: How To Install
+      label: How to install
       value: |
         [aqua supports several install ways](https://aquaproj.github.io/docs/reference/registry-config/#package-types).
 
         - [ ] Download pre-built binaries
           - [ ] GitHub Releases
-          - [ ] Files in the repository
+          - [ ] Files in the GitHub repository
           - [ ] URL: 
         - [ ] Build from source
           - [ ] go install: `go install `
