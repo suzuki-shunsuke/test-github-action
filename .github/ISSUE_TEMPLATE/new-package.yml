@@ -1,4 +1,4 @@
-name: Add a New Package
+name: 1. Add a New Package
 description: Request to add a new package to the registry
 labels:
   - enhancement
