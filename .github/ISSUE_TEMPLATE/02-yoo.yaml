@@ -1,0 +1,14 @@
+name: Yoo
+description: yoo
+body:
+  - type: dropdown
+    id: non_default_selection
+    attributes:
+      label: What selection would you like?
+      multiple: false
+      options:
+        - Good
+        - Bad
+        - Maybe So
+    validations:
+      required: true
