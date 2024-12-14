@@ -17,4 +17,4 @@ jobs:
           GITHUB_TOKEN: ${{github.token}}
       - uses: suzuki-shunsuke/github-action-tflint@feat-fix
         with:
-          github_comment: "true"
+          fix: "true"
