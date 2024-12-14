@@ -1,7 +1,7 @@
 resource "null_resource" "foo" {}
 
 terraform {
-  // hello
+  # hello
   required_version = ">= 1.0"
   required_providers {
     null = {
