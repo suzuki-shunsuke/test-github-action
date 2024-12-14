@@ -18,3 +18,4 @@ jobs:
       - uses: suzuki-shunsuke/github-action-tflint@feat-fix
         with:
           fix: "true"
+          working_directory: test
