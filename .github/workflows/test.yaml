@@ -15,8 +15,22 @@ jobs:
           aqua_version: v2.39.0
         env:
           GITHUB_TOKEN: ${{github.token}}
+      - id: token
+        uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
+        with:
+          app_id: ${{secrets.APP_ID}}
+          private_key: ${{secrets.APP_PRIVATE_KEY}}
+          permissions: >-
+            {
+              "contents": "write"
+            }
+          repositories: >-
+            [
+              "${{github.event.repository.name}}"
+            ]
       - uses: suzuki-shunsuke/github-action-tflint@feat-fix
         with:
           fix: "true"
           github_comment: "true"
+          github_token_for_fix: ${{ steps.token.outputs.token }}
           working_directory: test
