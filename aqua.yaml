@@ -8,9 +8,8 @@ checksum:
   require_checksum: true
 registries:
   - type: standard
-    ref: v4.261.0 # renovate: depName=aquaproj/aqua-registry
+    ref: v4.275.0 # renovate: depName=aquaproj/aqua-registry
 packages:
   # Split packages per package with `import` to avoid pull requests' conflict
-  # - import: aqua/*.yaml
+  - import: aqua/*.yaml
   # - name: nodejs/node@v22.11.0
-  - name: terraform-linters/tflint@v0.54.0
