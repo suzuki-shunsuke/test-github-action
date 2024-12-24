@@ -11,6 +11,8 @@ inputs:
     required: false
   float:
     required: false
+  "null":
+    required: false
 
 runs:
   using: composite
@@ -21,3 +23,4 @@ runs:
         NUMBER: ${{ inputs.number }}
         BOOL: ${{ inputs.bool }}
         FLOAT: ${{ inputs.float }}
+        NULL: ${{ inputs.null }}
