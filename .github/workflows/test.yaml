@@ -14,6 +14,7 @@ jobs:
         with:
           number: 1
           bool: true
+          float: 1.1
           # array: [1, 2, 3]
           # map:
           #   foo: bar

@@ -9,6 +9,8 @@ inputs:
     required: false
   map:
     required: false
+  float:
+    required: false
 
 runs:
   using: composite
@@ -18,3 +20,4 @@ runs:
       env:
         NUMBER: ${{ inputs.number }}
         BOOL: ${{ inputs.bool }}
+        FLOAT: ${{ inputs.float }}
