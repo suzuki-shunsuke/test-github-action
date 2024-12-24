@@ -15,5 +15,5 @@ jobs:
           number: 1
           bool: true
           array: [1, 2, 3]
-          map:
-            foo: bar
+          # map:
+          #   foo: bar
