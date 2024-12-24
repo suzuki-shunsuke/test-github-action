@@ -15,3 +15,6 @@ runs:
   steps:
     - shell: bash
       run: "true"
+      env:
+        NUMBER: ${{ inputs.number }}
+        BOOL: ${{ inputs.bool }}
