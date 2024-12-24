@@ -11,7 +11,7 @@ inputs:
     required: false
   float:
     required: false
-  "null":
+  foo:
     required: false
 
 runs:
@@ -23,4 +23,4 @@ runs:
         NUMBER: ${{ inputs.number }}
         BOOL: ${{ inputs.bool }}
         FLOAT: ${{ inputs.float }}
-        NULL: ${{ inputs.null }}
+        NULL: ${{ inputs.foo }}
