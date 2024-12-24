@@ -1,0 +1,26 @@
+name: Test input type
+
+inputs:
+  number:
+    required: false
+  bool:
+    required: false
+  array:
+    required: false
+  map:
+    required: false
+  float:
+    required: false
+  foo:
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: "true"
+      env:
+        NUMBER: ${{ inputs.number }}
+        BOOL: ${{ inputs.bool }}
+        FLOAT: ${{ inputs.float }}
+        NULL: ${{ inputs.foo }}
