@@ -1,0 +1,17 @@
+name: Test input type
+
+inputs:
+  number:
+    required: false
+  bool:
+    required: false
+  array:
+    required: false
+  map:
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: "true"
