@@ -17,7 +17,7 @@ jobs:
           aqua_version: v2.41.0
         env:
           GITHUB_TOKEN: ${{github.token}}
-      - run: echo "$GITHUB_TOKEN" | oras login -u suzuki-shunsuke --password-stdin ghcr.io
+      - run: echo "$GITHUB_TOKEN" | oras login -u octokit --password-stdin ghcr.io
         env:
           GITHUB_TOKEN: ${{github.token}}
       - run: oras push ghcr.io/$GITHUB_REPOSITORY/foo.json:latest foo.json
