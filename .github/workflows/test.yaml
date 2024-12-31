@@ -2,26 +2,22 @@
 name: test
 on:
   pull_request: {}
-  push:
-    branches:
-      - main
 jobs:
-  foo:
+  oras:
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      packages: write
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-      - uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
+      - uses: aquaproj/aqua-installer@f13c5d2f0357708d85477aabe50fd3f725528745 # v3.1.0
         with:
-          path: ~/.local/share/aquaproj-aqua
-          key: v1-aqua-installer-${{runner.os}}-${{runner.arch}}-${{hashFiles('aqua/*.yaml')}}
-          restore-keys: |
-            v1-aqua-installer-${{runner.os}}-${{runner.arch}}-
-      - uses: aquaproj/aqua-installer@6ce1f8848ec8e61f14d57bd5d7597057a6dd187c # v3.0.1
-        with:
-          aqua_version: v2.34.0
+          aqua_version: v2.41.0
         env:
           GITHUB_TOKEN: ${{github.token}}
-      - run: actionlint -version
-      - run: ghalint -v
+      - run: echo "$GITHUB_TOKEN" | oras login -u octokit --password-stdin ghcr.io
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+      - run: oras push ghcr.io/$GITHUB_REPOSITORY/foo.json:latest foo.json
