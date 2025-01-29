@@ -1,9 +1,6 @@
 ---
 name: deploy
-on:
-  pull_request:
-    paths:
-      - main
+on: pull_request
 jobs:
   fmt:
     name: Check if code is formatted
