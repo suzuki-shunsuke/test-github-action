@@ -12,3 +12,4 @@ registries:
 packages:
   # Split packages per package with `import` to avoid pull requests' conflict
   - import: aqua/*.yaml
+  - name: mvdan/gofumpt@v0.7.0
