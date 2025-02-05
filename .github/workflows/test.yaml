@@ -16,7 +16,4 @@ jobs:
         with:
           aqua_version: v2.43.2
       - run: aqua upc -prune
-      - uses: suzuki-shunsuke/commit-action@feat-app
-        with:
-          app_id: ${{secrets.APP_ID}}
-          app_private_key: ${{secrets.APP_PRIVATE_KEY}}
+      - uses: suzuki-shunsuke/commit-action@main
