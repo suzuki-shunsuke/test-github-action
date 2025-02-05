@@ -15,19 +15,11 @@ jobs:
       - uses: aquaproj/aqua-installer@e2d0136abcf70b7a2f6f505720640750557c4b33 # v3.1.1
         with:
           aqua_version: v2.43.2
+      - run: echo "" >> README.md
       - run: aqua upc -prune
-      - id: token
-        uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
-        with:
-          app_id: ${{secrets.APP_ID}}
-          private_key: ${{secrets.APP_PRIVATE_KEY}}
-          permissions: >-
-            {
-              "contents": "write"
-            }
-          repositories: >-
-            ["${{github.event.repository.name}}"]
       - uses: suzuki-shunsuke/commit-action@main
         with:
-          github_token: ${{steps.token.outputs.token}}
-
+          app_id: ${{ secrets.APP_ID }}
+          app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          files: |
+            aqua-checksums.json
