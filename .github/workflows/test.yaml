@@ -15,7 +15,7 @@ jobs:
       - uses: suzuki-shunsuke/gh-pages-action@first-pr
         with:
           app_id: ${{ secrets.APP_ID }}
-          app_private_key: ${{ secrets.PRIVATE_KEY }}
+          app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
           publish_dir: src
           destination_dir: build
           publish_branch: test-gh-pages
