@@ -19,3 +19,4 @@ jobs:
           publish_dir: src
           destination_dir: build
           publish_branch: test-gh-pages
+          external_repository: suzuki-shunsuke/test-github-action-2
