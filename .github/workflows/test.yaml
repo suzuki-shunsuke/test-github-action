@@ -25,9 +25,8 @@ jobs:
   status-check:
     runs-on: ubuntu-24.04
     needs: [foo, bar]
+    if: always()
     steps:
+      - run: exit 1
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
       # check needs
-      - run: echo "${{contains(needs.*.result, 'failure')}}"
-        env:
-          NEEDS: ${{ toJson(needs) }}
-          RESULTS: ${{ toJson(needs.*.result) }}
