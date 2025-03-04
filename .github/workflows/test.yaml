@@ -8,17 +8,19 @@ on:
 jobs:
   foo:
     runs-on: ubuntu-24.04
-    outputs:
-      needs: '["foo", "bar"]'
     steps:
       - run: |
           test -n "$TEST_ENV"
+        env:
+          TEST_ENV: ${{vars.TEST_ENV}}
 
   bar:
     runs-on: ubuntu-24.04
     steps:
       - run: |
           test -n "$TEST_ENV"
+        env:
+          TEST_ENV: ${{vars.TEST_ENV}}
 
   status-check:
     runs-on: ubuntu-24.04
