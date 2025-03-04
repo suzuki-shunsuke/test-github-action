@@ -28,7 +28,7 @@ jobs:
     if: always()
     steps:
       # check needs
-      - run: echo "$NEEDS"
+      - run: echo "${{contains(needs.*.result, 'failure')}}"
         env:
           NEEDS: ${{ toJson(needs) }}
           RESULTS: ${{ toJson(needs.*.result) }}
