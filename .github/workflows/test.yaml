@@ -25,7 +25,6 @@ jobs:
   status-check:
     runs-on: ubuntu-24.04
     needs: [foo, bar]
-    if: always()
     steps:
       # check needs
       - run: echo "${{contains(needs.*.result, 'failure')}}"
