@@ -9,13 +9,14 @@ jobs:
   foo:
     runs-on: ubuntu-24.04
     steps:
-      - run: |
-          test -n "$TEST_ENV"
+      - run: exit 1
         env:
           TEST_ENV: ${{vars.TEST_ENV}}
 
   bar:
     runs-on: ubuntu-24.04
+    needs:
+      - foo
     steps:
       - run: |
           test -n "$TEST_ENV"
@@ -24,9 +25,9 @@ jobs:
 
   status-check:
     runs-on: ubuntu-24.04
-    needs: [foo, bar]
+    needs: [bar]
     if: always()
     steps:
-      - run: exit 1
-        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
-      # check needs
+      - uses: suzuki-shunsuke/required-status-check-action@latest
+        with:
+          needs: ${{ toJson(needs) }}
