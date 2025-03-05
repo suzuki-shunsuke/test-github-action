@@ -9,7 +9,8 @@ jobs:
   foo:
     runs-on: ubuntu-24.04
     steps:
-      - run: exit 1
+      - run: |
+          test -n "$TEST_ENV"
         env:
           TEST_ENV: ${{vars.TEST_ENV}}
 
@@ -25,9 +26,9 @@ jobs:
 
   status-check:
     runs-on: ubuntu-24.04
-    needs: [foo, bar]
+    needs: [foo]
     if: always()
     steps:
-      - uses: suzuki-shunsuke/required-status-check-action@latest
+      - uses: suzuki-shunsuke/required-status-check-action@pr/22
         with:
-          needs: ${{ toJson(needs) }}
+          needs: ${{toJson(needs)}}
