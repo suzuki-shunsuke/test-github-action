@@ -25,7 +25,7 @@ jobs:
 
   status-check:
     runs-on: ubuntu-24.04
-    needs: [bar]
+    needs: [foo, bar]
     if: always()
     steps:
       - uses: suzuki-shunsuke/required-status-check-action@latest
