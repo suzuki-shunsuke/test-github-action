@@ -2,5 +2,12 @@
 name: test
 on: pull_request
 jobs:
-  status-check:
+  test:
     uses: ./.github/workflows/wc-test.yaml
+  status-check:
+    runs-on: ubuntu-24.04
+    if: failure()
+    needs:
+      - test
+    steps:
+      - run: exit 1
