@@ -1,0 +1,13 @@
+---
+name: status-check
+on:
+  workflow_run:
+    workflows: [test]
+    types:
+      - completed
+jobs:
+  status-check:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: exit 1
+        if: github.event.workflow_run.conclusion != 'success'
