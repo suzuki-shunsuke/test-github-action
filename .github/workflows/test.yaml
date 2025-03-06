@@ -6,18 +6,16 @@ on:
     branches:
       - main
 jobs:
-  foo:
+  test:
     runs-on: ubuntu-24.04
-    steps:
-      - run: |
-          test -n "$TEST_ENV"
-        env:
-          TEST_ENV: ${{vars.TEST_ENV}}
-
-  bar:
-    runs-on: ubuntu-24.04
-    needs:
-      - foo
+    name: "test (${{matrix.target}})"
+    strategy:
+      fail-fast: true
+      matrix:
+        target: [
+          foo,
+          bar
+        ]
     steps:
       - run: |
           test -n "$TEST_ENV"
@@ -26,9 +24,9 @@ jobs:
 
   status-check:
     runs-on: ubuntu-24.04
-    needs: [foo]
+    needs: [test]
     if: always()
     steps:
-      - uses: suzuki-shunsuke/required-status-check-action@pr/22
+      - uses: suzuki-shunsuke/required-status-check-action@latest
         with:
           needs: ${{toJson(needs)}}
