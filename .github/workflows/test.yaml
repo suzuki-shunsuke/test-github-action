@@ -6,22 +6,27 @@ on:
     branches:
       - main
 jobs:
-  foo:
+  test:
     runs-on: ubuntu-24.04
+    name: "test (${{matrix.target}})"
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [
+          foo,
+          bar
+        ]
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-        with:
-          persist-credentials: false
-      - uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
-        with:
-          path: ~/.local/share/aquaproj-aqua
-          key: v1-aqua-installer-${{runner.os}}-${{runner.arch}}-${{hashFiles('aqua/*.yaml')}}
-          restore-keys: |
-            v1-aqua-installer-${{runner.os}}-${{runner.arch}}-
-      - uses: aquaproj/aqua-installer@6ce1f8848ec8e61f14d57bd5d7597057a6dd187c # v3.0.1
-        with:
-          aqua_version: v2.34.0
+      - run: |
+          test -n "$TEST_ENV"
         env:
-          GITHUB_TOKEN: ${{github.token}}
-      - run: actionlint -version
-      - run: ghalint -v
+          TEST_ENV: ${{vars.TEST_ENV}}
+
+  status-check:
+    runs-on: ubuntu-24.04
+    needs: [test]
+    if: always()
+    steps:
+      - uses: suzuki-shunsuke/required-status-check-action@latest
+        with:
+          needs: ${{toJson(needs)}}
