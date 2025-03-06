@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-24.04
     name: "test (${{matrix.target}})"
     strategy:
-      # fail-fast: true
+      fail-fast: false
       matrix:
         target: [
           foo,
