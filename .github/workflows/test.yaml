@@ -5,4 +5,5 @@ jobs:
   foo:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo hello
+      - run: sleep 60
+      - run: exit 1
