@@ -20,10 +20,11 @@ jobs:
             "/repos/$GITHUB_REPOSITORY/check-runs" \
             -f "name=status-check" \
             -f "head_sha=$SHA" \
-            -f "status=$STATUS"
+            -f "status=completed" \
+            -f "conclusion=$CONCLUSION"
         env:
           GH_TOKEN: ${{ github.token }}
           SHA: ${{ github.event.workflow_run.head_sha }}
-          STATUS: ${{ github.event.workflow_run.conclusion }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
 
        
