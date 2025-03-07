@@ -5,7 +5,7 @@ jobs:
   foo:
     runs-on: ubuntu-24.04
     steps:
-      - run: test -n "$TEST_ENV"
+      - run: sleep 60
         env:
           TEST_ENV: ${{vars.TEST_ENV}}
   bar:
