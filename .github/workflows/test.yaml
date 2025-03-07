@@ -16,6 +16,7 @@ jobs:
     if: always()
     permissions:
       statuses: write
+      checks: write
     needs:
       - status-check
     steps:
