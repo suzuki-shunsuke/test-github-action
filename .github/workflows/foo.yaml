@@ -1,0 +1,8 @@
+---
+name: foo
+on: pull_request
+jobs:
+  status-check:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: exit 0
