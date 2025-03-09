@@ -17,7 +17,12 @@ jobs:
       - run: git config user.name suzuki-shunsuke
       - run: git config user.email suzuki-shunsuke@users.noreply.github.com
       - run: git commit -m "add foo.txt"
+      - run: gh auth setup-git
+        env:
+          GH_HOST: github.com
       - run: git push origin "$GITHUB_HEAD_REF"
+        env:
+          GH_TOKEN: ${{github.token}}
   bar:
     runs-on: ubuntu-24.04
     steps:
