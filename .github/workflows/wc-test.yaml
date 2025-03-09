@@ -7,13 +7,15 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: read
+    env:
+      BRANCH: test-workflow-call-status-check
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-      - run: git fetch origin main
-      - run: git checkout main
-      - run: git pull origin main
+      - run: git fetch origin "$BRANCH"
+      - run: git checkout "$BRANCH"
+      - run: git pull origin "$BRANCH"
   bar:
     runs-on: ubuntu-24.04
     steps:
