@@ -16,6 +16,7 @@ jobs:
       - run: git fetch origin "$BRANCH"
       - run: git checkout "$BRANCH"
       - run: git pull origin "$BRANCH"
+      - run: git rev-parse HEAD
   bar:
     runs-on: ubuntu-24.04
     steps:
