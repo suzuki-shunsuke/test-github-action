@@ -4,10 +4,14 @@ on: workflow_call
 jobs:
   foo:
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
     steps:
-      - run: test -n "$TEST_ENV"
-        env:
-          TEST_ENV: ${{vars.TEST_ENV}}
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - run: git pull origin main
   bar:
     runs-on: ubuntu-24.04
     steps:
