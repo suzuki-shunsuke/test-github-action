@@ -18,3 +18,4 @@ jobs:
             }
             return {}
       - run: echo ${{ fromJson(steps.metadata.outputs.result).pull_request.number }}
+        if: fromJson(steps.metadata.outputs.result).pull_request
