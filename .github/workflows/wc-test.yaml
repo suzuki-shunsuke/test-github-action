@@ -9,6 +9,7 @@ jobs:
         id: metadata
         with:
           script: |
+            return context;
             if (context.eventName.startsWith('pull_request')) {
               return {
                 "pull_request": {
@@ -17,5 +18,8 @@ jobs:
               }
             }
             return {}
-      - run: echo ${{ fromJson(steps.metadata.outputs.result).pull_request.number }}
-        if: fromJson(steps.metadata.outputs.result).pull_request
+      - run: echo ${CONTEXT}
+        env:
+          CONTEXT: ${{ steps.metadata.outputs.result }}
+      - run: echo ${{ fromJson(steps.metadata.outputs.result).payload.pull_request.number }}
+        if: fromJson(steps.metadata.outputs.result).payload.pull_request
