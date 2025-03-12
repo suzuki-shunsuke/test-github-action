@@ -5,13 +5,15 @@ jobs:
   foo:
     runs-on: ubuntu-24.04
     steps:
-      - run: test -n "$TEST_ENV"
+      - uses: actions/github-script@v7
+        id: metadata
+        with:
+          script: |
+            return {
+              context: context,
+            };
+      - run: echo ${CONTEXT}
         env:
-          TEST_ENV: ${{vars.TEST_ENV}}
-  bar:
-    runs-on: ubuntu-24.04
-    steps:
-      - run: test -n "$TEST_ENV"
-        env:
-          TEST_ENV: ${{vars.TEST_ENV}}
-
+          CONTEXT: ${{ steps.metadata.outputs.result }}
+      - run: echo ${{ fromJson(steps.metadata.outputs.result).context.payload.pull_request.number }}
+        if: fromJson(steps.metadata.outputs.result).context.payload.pull_request
