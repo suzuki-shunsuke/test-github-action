@@ -1,5 +1,6 @@
 ---
 name: test-pinact
+# test
 on: workflow_call
 jobs:
   integration-test:
