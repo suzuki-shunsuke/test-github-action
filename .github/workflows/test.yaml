@@ -4,8 +4,12 @@ on: pull_request
 jobs:
   yoo:
     runs-on: ubuntu-24.04
+    permissions:
+      statuses: write
     steps:
-      - run: |
+      - env:
+          GH_TOKEN: ${{github.token}}
+        run: |
           gh api \
             --method POST \
             -H "Accept: application/vnd.github+json" \
