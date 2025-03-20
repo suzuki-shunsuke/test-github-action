@@ -5,13 +5,8 @@ jobs:
   foo:
     runs-on: ubuntu-24.04
     steps:
-      - run: test -n "$TEST_ENV"
-        env:
-          TEST_ENV: ${{vars.TEST_ENV}}
-  bar:
-    runs-on: ubuntu-24.04
-    steps:
-      - run: test -n "$TEST_ENV"
-        env:
-          TEST_ENV: ${{vars.TEST_ENV}}
-
+      - run: touch .github/workflows/yoo.yaml
+      - uses: suzuki-shunsuke/commit-action@fix-remove-contents-write-if-only-workflow-is-change
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
