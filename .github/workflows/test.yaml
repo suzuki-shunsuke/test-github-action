@@ -2,5 +2,14 @@
 name: test
 on: pull_request
 jobs:
-  status-check:
-    uses: ./.github/workflows/wc-test.yaml
+  pinact:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: suzuki-shunsuke/pinact-action@chore-pinact-200
+        with:
+          skip_push: true
+          # app_id: ${{secrets.APP_ID}}
+          # app_private_key: ${{secrets.APP_PRIVATE_KEY}}
