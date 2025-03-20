@@ -10,4 +10,5 @@ jobs:
           persist-credentials: false
       - uses: suzuki-shunsuke/pinact-action@chore-pinact-200
         with:
-          skip_push: true
+          app_id: ${{secrets.APP_ID}}
+          app_private_key: ${{secrets.APP_PRIVATE_KEY}}
