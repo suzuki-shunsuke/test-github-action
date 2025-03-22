@@ -1,6 +1,13 @@
 ---
 name: test
-on: pull_request
+on:
+  push:
+    tags:
+      - v*
 jobs:
-  status-check:
-    uses: ./.github/workflows/wc-test.yaml
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo "$PAYLOAD"
+        env:
+          PAYLOAD: ${{ toJson(github.event) }}
